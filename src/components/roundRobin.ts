@@ -10,11 +10,11 @@ export const generateRounds = (participants: string[]): string[][] => {
 	for (let round = 0; round < players.length - 1; round++) {
 		const roundMatches: string[] = [];
 
-		for (let j = 0; j < players.length / 2; j++) {
-			const home = players[j];
-			const away = players[players.length - 1 - j];
+		for (let pairIndex = 0; pairIndex < players.length / 2; pairIndex++) {
+			const personA = players[pairIndex];
+			const personB = players[players.length - 1 - pairIndex];
 
-			roundMatches.push(`${home} ↔ ${away}`);
+			roundMatches.push(`${personA} ↔ ${personB}`);
 		}
 		rounds.push(roundMatches);
 		players.splice(1, 0, players.pop()!);
