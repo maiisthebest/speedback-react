@@ -6,7 +6,7 @@ describe("roundRobin", () => {
 		const participants = ["Alice", "Bob"];
 		const rounds = generateRounds(participants);
 
-		expect(rounds).toEqual([["Alice + Bob"]]);
+		expect(rounds).toEqual([["Alice ↔ Bob"]]);
 	});
 
 	it("should generate 3 rounds of 2 pairs for 4 participants (even number of participants)", () => {
@@ -14,9 +14,20 @@ describe("roundRobin", () => {
 		const rounds = generateRounds(participants);
 
 		expect(rounds).toEqual([
-			["Alice + David", "Bob + Charlie"],
-			["Alice + Bob", "Charlie + David"],
-			["Alice + Charlie", "David + Bob"],
+			["Alice ↔ David", "Bob ↔ Charlie"],
+			["Alice ↔ Charlie", "David ↔ Bob"],
+			["Alice ↔ Bob", "Charlie ↔ David"],
+		]);
+	});
+
+	it("should generate 3 rounds of 1 pair (and 1 sit out) for 3 participants (odd number of participants)", () => {
+		const participants = ["Alice", "Bob", "Charlie"];
+		const rounds = generateRounds(participants);
+
+		expect(rounds).toEqual([
+			["Alice ↔ BYE", "Bob ↔ Charlie"],
+			["Alice ↔ Charlie", "BYE ↔ Bob"],
+			["Alice ↔ Bob", "Charlie ↔ BYE"],
 		]);
 	});
 });
