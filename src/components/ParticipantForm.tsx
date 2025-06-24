@@ -1,10 +1,12 @@
 import { useState } from "react";
 import "./ParticipantForm.css";
+import { generateRounds } from "./roundRobin";
 
 const ParticipantForm = () => {
 	const [participantName, setParticipantName] = useState("");
 	const [participants, setParticipants] = useState<string[]>([]);
 	const [error, setError] = useState("");
+	const [rounds, setRounds] = useState<string[][]>([]);
 
 	const handleAddParticipant = () => {
 		const trimmedName = participantName.trim();
@@ -13,9 +15,11 @@ const ParticipantForm = () => {
 			setError("Name cannot be empty");
 			return;
 		}
-
-		setParticipants([...participants, trimmedName]);
+		const newParticipants = [...participants, trimmedName];
+		setParticipants(newParticipants);
 		setParticipantName("");
+
+		setRounds(generateRounds(newParticipants));
 	};
 
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -51,6 +55,22 @@ const ParticipantForm = () => {
 					<li key={index}>{participant}</li>
 				))}
 			</ul>
+
+			{rounds.length > 0 && (
+				<div className="rounds-container">
+					<h1>Rounds</h1>
+					{rounds.map((round, roundIdx) => (
+						<div key={roundIdx}>
+							<h2>Round {roundIdx + 1}</h2>
+							<ul>
+								{round.map((match, matchIdx) => (
+									<li key={matchIdx}>{match}</li>
+								))}
+							</ul>
+						</div>
+					))}
+				</div>
+			)}
 		</div>
 	);
 };
