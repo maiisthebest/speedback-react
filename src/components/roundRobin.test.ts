@@ -25,9 +25,9 @@ describe("roundRobin", () => {
 		const rounds = generateRounds(participants);
 
 		expect(rounds).toEqual([
-			["Alice ↔ BYE", "Bob ↔ Charlie"],
-			["Alice ↔ Charlie", "BYE ↔ Bob"],
-			["Alice ↔ Bob", "Charlie ↔ BYE"],
+			["Alice sits out", "Bob ↔ Charlie"],
+			["Alice ↔ Charlie", "Bob sits out"],
+			["Alice ↔ Bob", "Charlie sits out"],
 		]);
 	});
 });

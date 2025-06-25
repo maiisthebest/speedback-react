@@ -79,12 +79,12 @@ describe("SpeedbackForm", () => {
 		expect(screen.getByText("Alice ↔ Charlie")).toBeInTheDocument();
 
 		expect(screen.getByText("Round 2")).toBeInTheDocument();
-		expect(screen.getByText("Alice ↔ BYE")).toBeInTheDocument();
+		expect(screen.getByText("Alice sits out")).toBeInTheDocument();
 		expect(screen.getByText("Bob ↔ Charlie")).toBeInTheDocument();
 
 		expect(screen.getByText("Round 3")).toBeInTheDocument();
 		expect(screen.getByText("Alice ↔ Bob")).toBeInTheDocument();
-		expect(screen.getByText("Charlie ↔ BYE")).toBeInTheDocument();
+		expect(screen.getByText("Charlie sits out")).toBeInTheDocument();
 	});
 
 	it("removes a participant when Remove button is clicked", async () => {
