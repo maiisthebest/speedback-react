@@ -50,18 +50,22 @@ const ParticipantForm = () => {
 					{error && <p className="error-message">{error}</p>}
 				</form>
 			</div>
-			<ul>
-				{participants.map((participant, index) => (
-					<li key={index}>{participant}</li>
-				))}
-			</ul>
+
+			{participants.length > 0 && (
+				<div className="participants-container">
+					<ul>
+						{participants.map((participant, index) => (
+							<li key={index}>{participant}</li>
+						))}
+					</ul>
+				</div>
+			)}
 
 			{rounds.length > 0 && (
 				<div className="rounds-container">
-					<h1>Rounds</h1>
 					{rounds.map((round, roundIdx) => (
 						<div key={roundIdx}>
-							<h2>Round {roundIdx + 1}</h2>
+							<h3>Round {roundIdx + 1}</h3>
 							<ul>
 								{round.map((match, matchIdx) => (
 									<li key={matchIdx}>{match}</li>
