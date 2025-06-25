@@ -39,6 +39,18 @@ describe("SpeedbackForm", () => {
 		);
 	});
 
+	it("shows the correct number of participants count in the heading", async () => {
+		render(<SpeedbackForm />);
+
+		await user.type(screen.getByRole("textbox"), "Alice");
+		await user.keyboard("{Enter}");
+
+		await user.type(screen.getByRole("textbox"), "Bob");
+		await user.keyboard("{Enter}");
+
+		expect(screen.getByText("Participants (2)")).toBeInTheDocument();
+	});
+
 	it("does not add a participant if the name is empty", async () => {
 		render(<SpeedbackForm />);
 
