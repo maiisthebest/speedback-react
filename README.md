@@ -4,10 +4,10 @@ Welcome to the **Speedback Round Generator** – your new favorite tool for orga
 
 With this app, you can:
 
--   ✏️ Add and remove participants on the fly
--   🔄 Instantly generate rounds so everyone gets a turn with everyone else
--   🪑 Clearly see who "sits out" each round (no more awkward waiting!)
--   👀 View all rounds in a super clear, organised way
+-   Add and remove participants on the fly
+-   Instantly generate rounds so everyone gets a turn with everyone else
+-   Clearly see who "sits out" each round
+-   View all rounds in a super clear, organised way
 
 ## ✨ Features
 
@@ -30,6 +30,8 @@ Want to see how it works? Check out [`src/components/roundRobin.ts`](src/compone
 ✅ **Core features are ready to roll!**
 
 You can add/remove people, generate rounds, and see who's taking a break. Want to add more magic? PRs are welcome!
+
+_This project was made for fun! I'm not an expert in design, so the styling might not be the fanciest, BUT it works!_
 
 ## 🛠️ Tech Stack
 
