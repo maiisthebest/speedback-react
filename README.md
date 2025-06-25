@@ -1,74 +1,95 @@
-# Speedback Round Generator
+# 🎉 Speedback Round Generator
 
-A React application that helps generate rounds for speedback (speed feedback) sessions. This tool allows you to:
+Welcome to the **Speedback Round Generator** – your new favorite tool for organising speed feedback sessions 🚀
 
--   Add participants
--   Generate rounds ensuring everyone meets with everyone else
--   View the rounds in a clear, organised format
+With this app, you can:
 
-## Current Features
+-   ✏️ Add and remove participants on the fly
+-   🔄 Instantly generate rounds so everyone gets a turn with everyone else
+-   🪑 Clearly see who "sits out" each round (no more awkward waiting!)
+-   👀 View all rounds in a super clear, organised way
 
--   Add participants with their names
--   View list of added participants
--   Basic UI for participant management
+## ✨ Features
 
-## Development Status
+-   Add participants with their names (nicknames, emojis, whatever you like!)
+-   Remove participants with a single click (no hard feelings!)
+-   See a live list of everyone in the session
+-   Generate and view all rounds, so nobody misses out
+-   **Powered by the Round Robin algorithm** – everyone meets everyone, and if there's an odd number, we'll let you know who gets to chill each round ("Mai sits out")
+-   Modern, responsive UI that looks great on any device
+-   Battle-tested with Vitest and React Testing Library (using test-driven development!)
 
-🚧 Under Development
+## 🌀 How Does It Work? (The Magic of Round Robin)
 
-Currently implementing core functionality using Test-Driven Development (TDD).
+We use the classic **Round Robin algorithm** to make sure every participant gets paired with every other participant, with no repeats and no one left out. If there's an odd number of people, someone gets a break each round.
 
-## Tech Stack
+Want to see how it works? Check out [`src/components/roundRobin.ts`](src/components/roundRobin.ts) for the implementation.
+
+## 🚦 Project Status
+
+✅ **Core features are ready to roll!**
+
+You can add/remove people, generate rounds, and see who's taking a break. Want to add more magic? PRs are welcome!
+
+## 🛠️ Tech Stack
 
 -   React
 -   TypeScript
 -   Vite
--   Vitest for testing
--   React Testing Library
+-   Vitest + React Testing Library
 
-## Getting Started
+## 🚀 Getting Started
 
-1. Clone the repository
+1. **Clone this repo**
 
 ```bash
 git clone [repo-url]
 cd speedback-react
 ```
 
-2. Install dependencies
+2. **Install the magic**
 
 ```bash
 npm install
 ```
 
-3. Run the development server
+3. **Start the fun**
 
 ```bash
 npm run dev
 ```
 
-4. Run tests
+4. **Run the tests (because we care!)**
 
 ```bash
 npm run test:watch
 ```
 
-## Project Structure
+## 🗂️ Project Structure
 
 ```
 src/
 ├── components/
 │   ├── SpeedbackForm.tsx
-│   └── SpeedbackForm.test.tsx
+│   ├── SpeedbackForm.test.tsx
+│   ├── SpeedbackForm.css
+│   ├── roundRobin.ts        # The Round Robin algorithm lives here!
+│   └── roundRobin.test.ts
 ├── test/
 │   └── setup.ts
 └── App.tsx
 ```
 
-## Contributing
+## 🔄 How Rounds Work
 
-This project is currently in active development. Feel free to submit issues and pull requests.
+-   Each round, you'll see who's meeting whom.
+-   Got an odd number of folks? Someone gets to "sit out" and recharge (e.g., "Mai sits out").
+-   By the end, everyone will have met everyone else. No one left behind!
 
-## License
+## 🤝 Contributing
 
-MIT
+This project is open to ideas, improvements, and fun! Found a bug? Got a feature in mind? Open an issue or send a pull request. Let's make speedback even speedier, together!
+
+## 📄 License
+
+MIT – use it, remix it, share it, enjoy it!
