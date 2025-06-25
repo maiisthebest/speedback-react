@@ -53,6 +53,7 @@ const ParticipantForm = () => {
 
 			{participants.length > 0 && (
 				<div className="participants-container">
+					<h3>Participants ({participants.length})</h3>
 					<ul>
 						{participants.map((participant, index) => (
 							<li key={index}>{participant}</li>
@@ -62,7 +63,7 @@ const ParticipantForm = () => {
 			)}
 
 			{rounds.length > 0 && (
-				<div className="rounds-container">
+				<div className="rounds-section">
 					{rounds.map((round, roundIdx) => (
 						<div key={roundIdx}>
 							<h3>Round {roundIdx + 1}</h3>

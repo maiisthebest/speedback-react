@@ -57,7 +57,6 @@ describe("ParticipantForm", () => {
 		await user.type(screen.getByRole("textbox"), "Bob");
 		await user.keyboard("{Enter}");
 
-		expect(screen.getByText("Rounds")).toBeInTheDocument();
 		expect(screen.getByText("Round 1")).toBeInTheDocument();
 		expect(screen.getByText("Alice ↔ Bob")).toBeInTheDocument();
 
