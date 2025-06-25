@@ -31,7 +31,7 @@ Want to see how it works? Check out [`src/components/roundRobin.ts`](src/compone
 
 You can add/remove people, generate rounds, and see who's taking a break. Want to add more magic? PRs are welcome!
 
-_This project was made for fun! I'm not an expert in design, so the styling might not be the fanciest, BUT it works!_
+_This project was made for fun! I'm not an expert in design, so the styling might not be the fanciest, BUT it works_ 😝
 
 ## 🛠️ Tech Stack
 
