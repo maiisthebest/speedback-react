@@ -22,6 +22,14 @@ const SpeedbackForm = () => {
 		setRounds(generateRounds(newParticipants));
 	};
 
+	const removeParticipant = (index: number) => {
+		const newParticipants = [...participants];
+		newParticipants.splice(index, 1);
+		setParticipants(newParticipants);
+
+		setRounds(generateRounds(newParticipants));
+	};
+
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setError("");
 		setParticipantName(e.target.value);
@@ -56,7 +64,17 @@ const SpeedbackForm = () => {
 					<h3>Participants ({participants.length})</h3>
 					<ul>
 						{participants.map((participant, index) => (
-							<li key={index}>{participant}</li>
+							<li key={index} className="participant-item">
+								<span>{participant}</span>
+								<button
+									className="btn-remove"
+									onClick={() => removeParticipant(index)}
+									aria-label={`Remove ${participant}`}
+									type="button"
+								>
+									x
+								</button>
+							</li>
 						))}
 					</ul>
 				</div>

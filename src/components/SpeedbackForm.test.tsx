@@ -86,4 +86,19 @@ describe("SpeedbackForm", () => {
 		expect(screen.getByText("Alice ↔ Bob")).toBeInTheDocument();
 		expect(screen.getByText("Charlie ↔ BYE")).toBeInTheDocument();
 	});
+
+	it("removes a participant when Remove button is clicked", async () => {
+		render(<SpeedbackForm />);
+
+		await user.type(screen.getByRole("textbox"), "Alice");
+		await user.click(screen.getByRole("button", { name: "Add" }));
+
+		await user.type(screen.getByRole("textbox"), "Bob");
+		await user.click(screen.getByRole("button", { name: "Add" }));
+
+		await user.click(screen.getByRole("button", { name: "Remove Alice" }));
+
+		expect(screen.queryByText("Alice")).not.toBeInTheDocument();
+		expect(screen.getByText("Participants (1)")).toBeInTheDocument();
+	});
 });

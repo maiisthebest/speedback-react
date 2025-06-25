@@ -85,10 +85,34 @@ body {
 	font-weight: 600;
 }
 
+.participant-item {
+	display: flex;
+	justify-content: space-between;
+}
+
+.btn-remove {
+	background: none;
+	border: none;
+	color: #7b5cff;
+	font-size: 1rem;
+	font-weight: bold;
+	margin-left: 8px;
+	cursor: pointer;
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+}
+
+.btn-remove:hover,
+.btn-remove:focus {
+	background: rgba(123, 92, 255, 0.1);
+	color: #4f37d0;
+	outline: none;
+}
+
 .participant-form ul {
 	list-style: none;
 	padding: 0;
-	/* margin: 16px 0; */
 }
 
 .participant-form li {
