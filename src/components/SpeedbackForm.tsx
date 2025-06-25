@@ -1,8 +1,8 @@
 import { useState } from "react";
-import "./ParticipantForm.css";
+import "./SpeedbackForm.css";
 import { generateRounds } from "./roundRobin";
 
-const ParticipantForm = () => {
+const SpeedbackForm = () => {
 	const [participantName, setParticipantName] = useState("");
 	const [participants, setParticipants] = useState<string[]>([]);
 	const [error, setError] = useState("");
@@ -63,7 +63,7 @@ const ParticipantForm = () => {
 			)}
 
 			{rounds.length > 0 && (
-				<div className="rounds-section">
+				<div className="rounds-container">
 					{rounds.map((round, roundIdx) => (
 						<div key={roundIdx}>
 							<h3>Round {roundIdx + 1}</h3>
@@ -80,4 +80,4 @@ const ParticipantForm = () => {
 	);
 };
 
-export default ParticipantForm;
+export default SpeedbackForm;

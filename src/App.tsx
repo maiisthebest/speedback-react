@@ -1,7 +1,7 @@
-import ParticipantForm from "./components/ParticipantForm"
+import SpeedbackForm from "./components/SpeedbackForm";
 
 const App = () => {
-    return <ParticipantForm/>
-}
+	return <SpeedbackForm />;
+};
 
-export default App
+export default App;
