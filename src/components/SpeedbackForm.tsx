@@ -39,7 +39,7 @@ const SpeedbackForm = () => {
     <div className="participant-form">
       <h2>Add Participants</h2>
 
-      <div className="participant-form-input">
+      <div className="participant-form-wrapper">
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -59,42 +59,48 @@ const SpeedbackForm = () => {
         </form>
       </div>
 
-      {participants.length > 0 && (
-        <div className="participants-container">
-          <h3>Participants ({participants.length})</h3>
-          <ul>
-            {participants.map((participant, index) => (
-              <li key={index} className="participant-item">
-                <span>{participant}</span>
-                <button
-                  className="btn-remove"
-                  onClick={() => removeParticipant(index)}
-                  aria-label={`Remove ${participant}`}
-                  type="button"
-                >
-                  x
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <div className="content-wrapper">
+        {participants.length > 0 && (
+          <div className="participants-container">
+            <h3 className="container-title">
+              Participants ({participants.length})
+            </h3>
+            <ul>
+              {participants.map((participant, index) => (
+                <li key={index} className="participant-item">
+                  <span>{participant}</span>
+                  <button
+                    className="btn-remove"
+                    onClick={() => removeParticipant(index)}
+                    aria-label={`Remove ${participant}`}
+                    type="button"
+                  >
+                    x
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
-      {rounds.length > 0 && (
-        <div className="rounds-container">
-          <h3>Rounds ({rounds.length})</h3>
-          {rounds.map((round, roundIdx) => (
-            <div key={roundIdx}>
-              <h3>Round {roundIdx + 1}</h3>
-              <ul>
-                {round.map((match, matchIdx) => (
-                  <li key={matchIdx}>{match}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      )}
+        {rounds.length > 0 && (
+          <div className="rounds-container">
+            <h3 className="container-title">Rounds ({rounds.length})</h3>
+            {rounds.map((round, roundIdx) => (
+              <div key={roundIdx} className="round">
+                <h4>Round {roundIdx + 1}</h4>
+                <ul>
+                  {round.map((match, matchIdx) => (
+                    <li key={matchIdx} className="match-item">
+                      {match}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
