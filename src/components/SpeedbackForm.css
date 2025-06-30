@@ -4,6 +4,22 @@
   box-sizing: border-box;
 }
 
+/* Visually hidden class for accessibility */
+.visually-hidden {
+  border: 0;
+  /* Deprecated but provides legacy browser support */
+  clip: rect(0 0 0 0);
+  /* Modern standard for clipping */
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
 body {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   min-height: 100vh;

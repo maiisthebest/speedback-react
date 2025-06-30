@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./SpeedbackForm.css";
 import { generateRounds } from "./roundRobin";
 
@@ -8,6 +8,10 @@ const SpeedbackForm = () => {
   const [error, setError] = useState("");
   const [rounds, setRounds] = useState<string[][]>([]);
 
+  useEffect(() => {
+    setRounds(generateRounds(participants));
+  }, [participants]);
+
   const handleAddParticipant = () => {
     const trimmedName = participantName.trim();
 
@@ -15,19 +19,21 @@ const SpeedbackForm = () => {
       setError("Name cannot be empty");
       return;
     }
+
+    if (participants.includes(trimmedName)) {
+      setError("Name already exists");
+      return;
+    }
+
     const newParticipants = [...participants, trimmedName];
     setParticipants(newParticipants);
     setParticipantName("");
-
-    setRounds(generateRounds(newParticipants));
   };
 
-  const removeParticipant = (index: number) => {
-    const newParticipants = [...participants];
-    newParticipants.splice(index, 1);
-    setParticipants(newParticipants);
-
-    setRounds(generateRounds(newParticipants));
+  const removeParticipant = (nameToRemove: string) => {
+    setParticipants(
+      participants.filter((participant) => participant !== nameToRemove),
+    );
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,7 +53,11 @@ const SpeedbackForm = () => {
             handleAddParticipant();
           }}
         >
+          <label htmlFor="participant-name-input" className="visually-hidden">
+            Participant Name
+          </label>
           <input
+            id="participant-name-input"
             type="text"
             placeholder="Participant Name"
             value={participantName}
@@ -65,13 +75,13 @@ const SpeedbackForm = () => {
             <h3 className="container-title">
               Participants ({participants.length})
             </h3>
-            <ul>
-              {participants.map((participant, index) => (
-                <li key={index} className="participant-item">
+            <ul aria-live="polite">
+              {participants.map((participant) => (
+                <li key={participant} className="participant-item">
                   <span>{participant}</span>
                   <button
                     className="btn-remove"
-                    onClick={() => removeParticipant(index)}
+                    onClick={() => removeParticipant(participant)}
                     aria-label={`Remove ${participant}`}
                     type="button"
                   >

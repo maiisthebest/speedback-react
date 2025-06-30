@@ -73,6 +73,19 @@ describe("SpeedbackForm", () => {
     expect(screen.getByText("Name cannot be empty")).toBeInTheDocument();
   });
 
+  it("does not add a duplicate participant", async () => {
+    render(<SpeedbackForm />);
+
+    await user.type(screen.getByRole("textbox"), "Alice");
+    await user.keyboard("{Enter}");
+
+    await user.type(screen.getByRole("textbox"), "Alice");
+    await user.keyboard("{Enter}");
+
+    expect(screen.getAllByText("Alice")).toHaveLength(1);
+    expect(screen.getByText("Name already exists")).toBeInTheDocument();
+  });
+
   it("generates rounds when participants are added", async () => {
     render(<SpeedbackForm />);
 
@@ -102,7 +115,7 @@ describe("SpeedbackForm", () => {
     expect(screen.getByText("Charlie sits out")).toBeInTheDocument();
   });
 
-  it("removes a participant when Remove button is clicked", async () => {
+  it("removes a participant and recalculates rounds when participants are removed", async () => {
     render(<SpeedbackForm />);
 
     await user.type(screen.getByRole("textbox"), "Alice");
@@ -111,9 +124,17 @@ describe("SpeedbackForm", () => {
     await user.type(screen.getByRole("textbox"), "Bob");
     await user.click(screen.getByRole("button", { name: "Add" }));
 
+    await user.type(screen.getByRole("textbox"), "Charlie");
+    await user.click(screen.getByRole("button", { name: "Add" }));
+
+    expect(screen.getByText("Participants (3)")).toBeInTheDocument();
+    expect(screen.getByText("Rounds (3)")).toBeInTheDocument();
+
     await user.click(screen.getByRole("button", { name: "Remove Alice" }));
 
     expect(screen.queryByText("Alice")).not.toBeInTheDocument();
-    expect(screen.getByText("Participants (1)")).toBeInTheDocument();
+    expect(screen.getByText("Participants (2)")).toBeInTheDocument();
+    expect(screen.getByText("Rounds (1)")).toBeInTheDocument();
+    expect(screen.getByText("Bob ↔ Charlie")).toBeInTheDocument();
   });
 });
