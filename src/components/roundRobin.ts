@@ -1,5 +1,5 @@
 export const generateRounds = (participants: string[]): string[][] => {
-	let players = [...participants];
+	const players = [...participants];
 
 	if (players.length % 2 !== 0) {
 		players.push("BYE");
