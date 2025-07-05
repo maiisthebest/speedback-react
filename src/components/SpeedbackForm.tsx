@@ -43,7 +43,11 @@ const SpeedbackForm = () => {
 
 	return (
 		<div className="participant-form">
-			<h2>Add Participants</h2>
+			<h2>Speedback</h2>
+			<p>
+				Quickly pair up your team for fun, speed-dating style feedback
+				rounds. Just add names and let the magic happen ⚡️
+			</p>
 
 			<div className="participant-form-wrapper">
 				<form
