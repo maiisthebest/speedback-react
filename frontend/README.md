@@ -1,6 +1,8 @@
 # 🎉 Speedback Round Generator
 
-Welcome to the **Speedback Round Generator** – your new favorite tool for organising speed feedback sessions 🚀
+Welcome to the **Speedback Round Generator** – your new favorite tool for organising speed-dating style feedback sessions 🚀
+
+This repository is structured as a monorepo with separate `frontend` and `backend` folders.
 
 With this app, you can:
 
@@ -49,19 +51,25 @@ git clone [repo-url]
 cd speedback-react
 ```
 
-2. **Install the magic**
+2. **Navigate to the frontend directory**
+
+```bash
+cd frontend
+```
+
+3. **Install the magic**
 
 ```bash
 npm install
 ```
 
-3. **Start the fun**
+4. **Start the fun**
 
 ```bash
 npm run dev
 ```
 
-4. **Run the tests (because I care!)**
+5. **Run the tests (because I care!)**
 
 ```bash
 npm run test:watch
@@ -70,16 +78,27 @@ npm run test:watch
 ## 🗂️ Project Structure
 
 ```
-src/
-├── components/
-│   ├── SpeedbackForm.tsx
-│   ├── SpeedbackForm.test.tsx
-│   ├── SpeedbackForm.css
-│   ├── roundRobin.ts        # The Round Robin algorithm lives here!
-│   └── roundRobin.test.ts
-├── test/
-│   └── setup.ts
-└── App.tsx
+.  # Repository Root
+├── backend/
+└── frontend/
+    ├── src/
+    │   ├── components/
+    │   │   ├── SpeedbackForm.tsx
+    │   │   ├── SpeedbackForm.test.tsx
+    │   │   ├── SpeedbackForm.css
+    │   │   ├── roundRobin.ts        # The Round Robin algorithm lives here!
+    │   │   └── roundRobin.test.ts
+    │   ├── test/
+    │   │   └── setup.ts
+    │   └── App.tsx
+    ├── public/
+    ├── index.html
+    ├── package.json
+    ├── README.md
+    ├── tsconfig.json
+    ├── tsconfig.app.json
+    ├── tsconfig.node.json
+    └── vite.config.ts
 ```
 
 ## 🔄 How Rounds Work
