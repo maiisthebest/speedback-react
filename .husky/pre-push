@@ -1,1 +1,2 @@
-cd frontend && npm run build && npm test
+cd frontend && npm run build && npm test 
+cd backend && npm test

@@ -1,0 +1,16 @@
+{
+	"name": "speedback-monorepo",
+	"private": true,
+	"workspaces": [
+		"frontend",
+		"backend"
+	],
+	"scripts": {
+		"prepare": "husky"
+	},
+	"devDependencies": {
+		"husky": "^9.1.7",
+		"lint-staged": "^16.1.2",
+		"prettier": "^3.3.3"
+	}
+}

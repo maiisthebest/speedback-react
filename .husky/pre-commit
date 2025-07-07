@@ -1,1 +1,6 @@
-cd frontend && npx lint-staged
+#!/bin/sh
+set -e
+
+echo "Running pre-commit hook..."
+npx lint-staged
+echo "Pre-commit checks passed."
