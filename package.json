@@ -1,5 +1,8 @@
 {
 	"name": "speedback-monorepo",
+	"private": true,
+	"version": "1.0.0",
+	"author": "Phuong Mai Nguyen",
 	"workspaces": [
 		"frontend",
 		"backend"
