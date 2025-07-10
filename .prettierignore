@@ -1,0 +1,6 @@
+# Ignore files and directories that are generated or not part of the source code.
+
+node_modules
+dist
+coverage
+.DS_Store

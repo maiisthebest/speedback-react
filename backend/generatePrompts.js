@@ -1,3 +1,3 @@
-module.exports = async function generatePrompts(topic) {
+module.exports = async function generatePrompts() {
 	return [];
 };

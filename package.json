@@ -1,12 +1,12 @@
 {
 	"name": "speedback-monorepo",
-	"private": true,
 	"workspaces": [
 		"frontend",
 		"backend"
 	],
 	"scripts": {
-		"prepare": "husky"
+		"prepare": "husky",
+		"lint": "npm run lint --workspaces"
 	},
 	"devDependencies": {
 		"husky": "^9.1.7",
