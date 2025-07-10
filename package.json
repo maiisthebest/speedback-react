@@ -6,7 +6,8 @@
 	],
 	"scripts": {
 		"prepare": "husky",
-		"lint": "npm run lint --workspaces"
+		"lint": "npm run lint --workspaces",
+		"test": "npm test --workspaces"
 	},
 	"devDependencies": {
 		"husky": "^9.1.7",
