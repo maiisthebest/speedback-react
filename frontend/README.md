@@ -11,19 +11,19 @@ Welcome to the frontend for Speedback!
 
 ## 🚀 Getting Started
 
-1. **Install the magic**
+**1. Install the magic**
 
 ```bash
 npm install
 ```
 
-1. **Start the fun**
+**2. Start the fun**
 
 ```bash
 npm run dev
 ```
 
-1. **Run the tests (because I care!)**
+**3. Run the tests (because I care!)**
 
 ```bash
 npm run test:watch
