@@ -51,7 +51,7 @@ This project is divided into two workspaces:
 To get started with this project, clone the repository and install the dependencies in the root directory:
 
 ```bash
-git clone https://github.com/your-username/speedback-react.git
+git clone https://github.com/maiisthebest/speedback-react.git
 cd speedback-react
 npm install
 ```
