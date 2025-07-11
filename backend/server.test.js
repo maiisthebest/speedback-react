@@ -1,22 +1,25 @@
-const request = require("supertest");
-const app = require("./server");
+import { describe, it, expect, vi } from "vitest";
+import supertest from "supertest";
+import app from "./server.js";
+import generatePrompts from "./generatePrompts.js";
 
-jest.mock("./generatePrompts");
-const generatePrompts = require("./generatePrompts");
+vi.mock("./generatePrompts.js");
+
+const request = supertest(app);
 
 describe("POST /api/feedback-prompts", () => {
 	it("should return 200 and prompts in the response body", async () => {
-		generatePrompts.mockResolvedValue(["Prompt 1", "Prompt 2"]);
+		const mockPrompts = ["Prompt 1", "Prompt 2"];
+
+		vi.mocked(generatePrompts).mockResolvedValue(mockPrompts);
 
 		const topic = "teamwork";
-		const res = await request(app)
-			.post("/api/feedback-prompts")
-			.send({ topic });
+		const res = await request.post("/api/feedback-prompts").send({ topic });
 
 		expect(generatePrompts).toHaveBeenCalledWith(topic);
 
 		expect(res.statusCode).toBe(200);
 		expect(res.body).toHaveProperty("prompts");
-		expect(res.body.prompts).toBeInstanceOf(Array);
+		expect(res.body.prompts).toEqual(mockPrompts);
 	});
 });

@@ -1,3 +1,5 @@
-module.exports = async function generatePrompts() {
-	return [];
+const generatePrompts = async () => {
+	return null;
 };
+
+export default generatePrompts;

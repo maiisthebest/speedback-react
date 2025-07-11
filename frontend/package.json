@@ -2,7 +2,7 @@
 	"name": "frontend",
 	"version": "1.0.0",
 	"type": "module",
-	"author": "Phuong Mai Nguyen",
+	"description": "Speedback Frontend",
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc -b && vite build",
