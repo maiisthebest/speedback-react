@@ -1,4 +1,12 @@
 {
+	"projects": {
+		"frontend": {
+			"source": "frontend"
+		},
+		"backend": {
+			"source": "backend/api"
+		}
+	},
 	"functions": {
 		"backend/api/**/*.js": {
 			"runtime": "nodejs22.x"
@@ -8,6 +16,10 @@
 		{
 			"src": "/api/(.*)",
 			"dest": "backend/api/$1.js"
+		},
+		{
+			"src": "/(.*)",
+			"dest": "frontend/$1"
 		}
 	]
 }
