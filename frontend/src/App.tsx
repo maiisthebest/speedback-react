@@ -5,13 +5,16 @@ const App = () => {
 	useEffect(() => {
 		const testGeneratePrompts = async () => {
 			try {
-				const res = await fetch("/api/feedback-prompts", {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
+				const res = await fetch(
+					"https://mai-speedback-backend.vercel.app/api/feedback-prompts",
+					{
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+						},
+						body: JSON.stringify({ topic: "collaboration" }),
 					},
-					body: JSON.stringify({ topic: "collaboration" }),
-				});
+				);
 
 				const data = await res.json();
 				console.log("Generated prompts:", data);
