@@ -1,25 +1,8 @@
 {
-	"projects": {
-		"frontend": {
-			"source": "frontend"
-		},
-		"backend": {
-			"source": "backend/api"
-		}
-	},
-	"functions": {
-		"backend/api/**/*.js": {
-			"runtime": "nodejs22.x"
-		}
-	},
-	"routes": [
+	"rewrites": [
 		{
-			"src": "/api/(.*)",
-			"dest": "backend/api/$1.js"
-		},
-		{
-			"src": "/(.*)",
-			"dest": "frontend/$1"
+			"source": "/api/(.*)",
+			"destination": "/backend/api/$1"
 		}
 	]
 }
