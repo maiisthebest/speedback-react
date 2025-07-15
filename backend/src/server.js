@@ -1,5 +1,5 @@
 import express from "express";
-import generatePrompts from "./generatePrompts.js";
+import generatePrompts from "../api/generatePrompts.js";
 import cors from "cors";
 
 const app = express();

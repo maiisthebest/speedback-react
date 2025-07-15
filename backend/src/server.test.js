@@ -1,9 +1,9 @@
 import { describe, it, expect, vi } from "vitest";
 import supertest from "supertest";
 import app from "./server.js";
-import generatePrompts from "./generatePrompts.js";
+import generatePrompts from "../api/generatePrompts.js";
 
-vi.mock("./generatePrompts.js");
+vi.mock("../api/generatePrompts.js");
 
 const request = supertest(app);
 
