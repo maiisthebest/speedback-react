@@ -8,7 +8,7 @@
 		"backend"
 	],
 	"scripts": {
-		"prepare": "husky",
+		"prepare": "husky || true",
 		"lint": "npm run lint --workspaces",
 		"test": "npm test --workspaces"
 	},
