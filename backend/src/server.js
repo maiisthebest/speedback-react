@@ -1,9 +1,12 @@
 import express from "express";
 import generatePrompts from "./generatePrompts.js";
+import cors from "cors";
 
 const app = express();
-app.use(express.json());
 const port = 3000;
+
+app.use(express.json());
+app.use(cors({ origin: "http://localhost:5173" }));
 
 app.post("/api/feedback-prompts", async (req, res) => {
 	const { topic } = req.body;
