@@ -1,10 +1,9 @@
-import generateFeedbackPrompts from "../src/generateFeedbackPrompts.js";
+import { handleFeedbackPromptsRequest } from "../src/requestHandlers/handleFeedbackPromptsRequest.js";
 
 const allowedOrigins = [process.env.FRONTEND_URL];
 
 export default async function handler(req, res) {
 	const origin = req.headers.origin;
-
 	if (allowedOrigins.includes(origin)) {
 		res.setHeader("Access-Control-Allow-Origin", origin);
 	}
@@ -24,8 +23,5 @@ export default async function handler(req, res) {
 		return res.status(403).json({ error: "Forbidden: Origin not allowed" });
 	}
 
-	const { topic } = req.body;
-	const prompts = await generateFeedbackPrompts(topic);
-
-	res.status(200).json({ prompts });
+	await handleFeedbackPromptsRequest(req, res);
 }

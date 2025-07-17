@@ -1,7 +1,8 @@
 import { describe, it, expect, vi } from "vitest";
-import generateFeedbackPrompts, {
+import {
 	AI_MODEL,
 	PROMPT_TEMPLATE,
+	generateFeedbackPrompts,
 } from "./generateFeedbackPrompts.js";
 
 vi.mock("@google/generative-ai", () => {
