@@ -1,4 +1,4 @@
-import "../config.js";
+import "./config.js";
 import express from "express";
 import handleFeedbackPrompts from "./handleFeedbackPrompts.js";
 import cors from "cors";
