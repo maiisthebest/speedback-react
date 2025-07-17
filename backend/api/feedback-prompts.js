@@ -1,6 +1,6 @@
 import generatePrompts from "../src/generatePrompts.js";
 
-const allowedOrigins = ["https://mai-speedback.vercel.app"];
+const allowedOrigins = [process.env.FRONTEND_URL];
 
 export default async function handler(req, res) {
 	const origin = req.headers.origin;
