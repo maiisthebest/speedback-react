@@ -1,12 +1,15 @@
 import express from "express";
 import generatePrompts from "./generatePrompts.js";
 import cors from "cors";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 const port = 3000;
 
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({ origin: process.env.FRONTEND_URL }));
 
 app.post("/api/feedback-prompts", async (req, res) => {
 	const { topic } = req.body;
