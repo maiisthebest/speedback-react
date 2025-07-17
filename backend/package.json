@@ -1,12 +1,12 @@
 {
 	"name": "backend",
 	"version": "1.0.0",
-	"main": "src/server.js",
+	"main": "src/local/server.js",
 	"type": "module",
 	"scripts": {
 		"lint": "eslint '**/*.js'",
 		"lint:fix": "eslint '**/*.js' --fix",
-		"start": "nodemon src/server.js",
+		"start": "nodemon src/local/server.js",
 		"test": "vitest",
 		"test:watch": "vitest --watch"
 	},

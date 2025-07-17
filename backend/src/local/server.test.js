@@ -1,9 +1,9 @@
 import { describe, it, expect, vi } from "vitest";
 import supertest from "supertest";
 import app from "./server.js";
-import handleFeedbackPrompts from "./handleFeedbackPrompts.js";
+import handleFeedbackPrompts from "../handleFeedbackPrompts.js";
 
-vi.mock("./handleFeedbackPrompts.js");
+vi.mock("../handleFeedbackPrompts.js");
 
 const request = supertest(app);
 

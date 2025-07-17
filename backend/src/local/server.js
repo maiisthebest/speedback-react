@@ -1,6 +1,6 @@
 import "./config.js";
 import express from "express";
-import handleFeedbackPrompts from "./handleFeedbackPrompts.js";
+import handleFeedbackPrompts from "../handleFeedbackPrompts.js";
 import cors from "cors";
 
 const app = express();
