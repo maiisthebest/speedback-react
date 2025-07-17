@@ -1,4 +1,4 @@
-import generatePrompts from "../src/generatePrompts.js";
+import handleFeedbackPrompts from "../src/handleFeedbackPrompts.js";
 
 const allowedOrigins = [process.env.FRONTEND_URL];
 
@@ -25,7 +25,7 @@ export default async function handler(req, res) {
 	}
 
 	const { topic } = req.body;
-	const prompts = await generatePrompts(topic);
+	const prompts = await handleFeedbackPrompts(topic);
 
 	res.status(200).json({ prompts });
 }

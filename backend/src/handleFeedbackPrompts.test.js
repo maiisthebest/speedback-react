@@ -1,8 +1,8 @@
 import { describe, it, expect, vi } from "vitest";
-import generatePrompts, {
+import handleFeedbackPrompts, {
 	AI_MODEL,
 	PROMPT_TEMPLATE,
-} from "./generatePrompts.js";
+} from "./handleFeedbackPrompts.js";
 
 vi.mock("@google/generative-ai", () => {
 	const mockGenerateContent = vi.fn();
@@ -19,7 +19,7 @@ const { mockGetGenerativeModel, mockGenerateContent } = await import(
 	"@google/generative-ai"
 );
 
-describe("generatePrompts", () => {
+describe("handleFeedbackPrompts", () => {
 	it("should return an array of prompts based on a topic", async () => {
 		const mockApiResponse = {
 			response: {
@@ -30,7 +30,7 @@ describe("generatePrompts", () => {
 		mockGenerateContent.mockResolvedValue(mockApiResponse);
 
 		const mockTopic = "test topic";
-		const prompts = await generatePrompts(mockTopic);
+		const prompts = await handleFeedbackPrompts(mockTopic);
 
 		expect(mockGetGenerativeModel).toHaveBeenCalledWith({
 			model: AI_MODEL,

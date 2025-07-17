@@ -1,5 +1,5 @@
 import express from "express";
-import generatePrompts from "./generatePrompts.js";
+import handleFeedbackPrompts from "./handleFeedbackPrompts.js";
 import cors from "cors";
 import dotenv from "dotenv";
 
@@ -13,7 +13,7 @@ app.use(cors({ origin: process.env.FRONTEND_URL }));
 
 app.post("/api/feedback-prompts", async (req, res) => {
 	const { topic } = req.body;
-	const prompts = await generatePrompts(topic);
+	const prompts = await handleFeedbackPrompts(topic);
 
 	res.status(200).json({ prompts });
 });
