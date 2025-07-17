@@ -1,9 +1,9 @@
 import { describe, it, expect, vi } from "vitest";
 import supertest from "supertest";
 import app from "./server.js";
-import handleFeedbackPrompts from "../handleFeedbackPrompts.js";
+import generateFeedbackPrompts from "../generateFeedbackPrompts.js";
 
-vi.mock("../handleFeedbackPrompts.js");
+vi.mock("../generateFeedbackPrompts.js");
 
 const request = supertest(app);
 
@@ -11,12 +11,12 @@ describe("POST /api/feedback-prompts", () => {
 	it("should return 200 and prompts in the response body", async () => {
 		const mockPrompts = ["Prompt 1", "Prompt 2"];
 
-		vi.mocked(handleFeedbackPrompts).mockResolvedValue(mockPrompts);
+		vi.mocked(generateFeedbackPrompts).mockResolvedValue(mockPrompts);
 
 		const topic = "teamwork";
 		const res = await request.post("/api/feedback-prompts").send({ topic });
 
-		expect(handleFeedbackPrompts).toHaveBeenCalledWith(topic);
+		expect(generateFeedbackPrompts).toHaveBeenCalledWith(topic);
 
 		expect(res.statusCode).toBe(200);
 		expect(res.body).toHaveProperty("prompts");

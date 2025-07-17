@@ -5,7 +5,7 @@ export const AI_MODEL = "gemini-2.0-flash";
 
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
 
-const handleFeedbackPrompts = async (topic) => {
+const generateFeedbackPrompts = async (topic) => {
 	const prompt = PROMPT_TEMPLATE.replace("{topic}", topic);
 
 	try {
@@ -22,4 +22,4 @@ const handleFeedbackPrompts = async (topic) => {
 	}
 };
 
-export default handleFeedbackPrompts;
+export default generateFeedbackPrompts;
