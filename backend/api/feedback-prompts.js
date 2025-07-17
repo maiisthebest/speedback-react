@@ -1,4 +1,4 @@
-import generatePrompts from "./generatePrompts.js";
+import generatePrompts from "../src/generatePrompts.js";
 
 const allowedOrigins = ["https://mai-speedback.vercel.app"];
 
