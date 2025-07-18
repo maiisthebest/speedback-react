@@ -10,10 +10,12 @@ describe("SpeedbackForm", () => {
 		user = userEvent.setup();
 	});
 
-	it("renders the form with input and add button", () => {
+	it("renders correctly with default state", () => {
 		render(<SpeedbackForm />);
 
-		expect(screen.getByRole("textbox")).toBeInTheDocument();
+		expect(
+			screen.getByRole("textbox", { name: "Participant Name" }),
+		).toBeInTheDocument();
 		expect(screen.getByRole("button", { name: "Add" })).toBeInTheDocument();
 	});
 
