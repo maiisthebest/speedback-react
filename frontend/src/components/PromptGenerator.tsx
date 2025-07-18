@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./PromptGenerator.css";
 
 const PromptGenerator = () => {
 	const baseUrl = import.meta.env.VITE_BACKEND_URL;
@@ -45,7 +46,7 @@ const PromptGenerator = () => {
 			</form>
 
 			{prompts.length > 0 && (
-				<div className="prompts-list">
+				<div className="prompts-container">
 					<ul>
 						{prompts.map((prompt, index) => (
 							<li key={index}>{prompt}</li>

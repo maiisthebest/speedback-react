@@ -1,0 +1,124 @@
+.visually-hidden {
+	border: 0;
+	/* Deprecated but provides legacy browser support */
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	white-space: nowrap;
+}
+
+.participant-form-wrapper form {
+	display: flex;
+	gap: 0.5rem;
+	margin-bottom: 1rem;
+}
+
+.content-wrapper {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 2rem;
+	margin-top: 2rem;
+}
+
+.participants-container {
+	margin-bottom: 24px;
+}
+
+.container-title {
+	color: #555;
+	border-bottom: 2px solid #e2e8f0;
+	padding-bottom: 0.5rem;
+	margin-bottom: 1rem;
+	font-size: 1.25rem;
+	font-weight: 600;
+}
+
+.participant-item {
+	display: flex;
+	justify-content: space-between;
+}
+
+.btn-remove {
+	background: none;
+	border: none;
+	color: #7b5cff;
+	font-size: 1rem;
+	font-weight: bold;
+	margin-left: 8px;
+	cursor: pointer;
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+}
+
+.btn-remove:hover,
+.btn-remove:focus {
+	background: rgba(123, 92, 255, 0.1);
+	color: #4f37d0;
+	outline: none;
+}
+
+.error-message {
+	color: #e74c3c;
+	margin-top: 0.25rem;
+	font-size: 0.9rem;
+	text-align: left;
+	padding: 8px 12px;
+	background: #fdf2f2;
+	border-radius: 6px;
+}
+
+.rounds-container > div {
+	margin-bottom: 24px;
+	padding: 16px;
+	background: #fff;
+	border-radius: 12px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.rounds-container > div:last-child {
+	margin-bottom: 0;
+}
+
+.rounds-container h4 {
+	color: #4f8cff;
+}
+
+.rounds-container ul {
+	margin: 0;
+	padding-left: 0;
+}
+
+.rounds-container li {
+	background: #f8f9fa;
+	color: #333;
+	padding: 8px 12px;
+	font-size: 0.95rem;
+	border-left: 3px solid #4f8cff;
+	margin: 8px 0;
+	border-radius: 6px;
+}
+
+.rounds-container li:hover {
+	background: #f0f2ff;
+}
+
+@media (max-width: 768px) {
+	.content-wrapper {
+		grid-template-columns: 1fr;
+	}
+
+	.participant-form-wrapper form {
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	.participant-form-wrapper button[type="submit"] {
+		width: 100%;
+	}
+}

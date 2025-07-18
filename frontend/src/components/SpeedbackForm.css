@@ -4,22 +4,6 @@
 	box-sizing: border-box;
 }
 
-/* Visually hidden class for accessibility */
-.visually-hidden {
-	border: 0;
-	/* Deprecated but provides legacy browser support */
-	clip: rect(0 0 0 0);
-	/* Modern standard for clipping */
-	clip-path: inset(50%);
-	height: 1px;
-	margin: -1px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 1px;
-	white-space: nowrap;
-}
-
 body {
 	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 	min-height: 100vh;
@@ -27,7 +11,7 @@ body {
 	line-height: 1.6;
 }
 
-.participant-form {
+.speedback-form {
 	max-width: 700px;
 	margin: 2rem auto;
 	padding: 32px 24px;
@@ -38,7 +22,7 @@ body {
 		0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-.participant-form > p {
+.speedback-form > p {
 	font-size: 1.2rem;
 	color: #444;
 	margin-bottom: 2rem;
@@ -48,7 +32,7 @@ body {
 	margin-right: auto;
 }
 
-.participant-form h2 {
+.speedback-form h2 {
 	font-size: 2.5rem;
 	font-weight: 800;
 	letter-spacing: 2px;
@@ -57,13 +41,7 @@ body {
 	text-align: center;
 }
 
-.participant-form form {
-	display: flex;
-	gap: 0.5rem;
-	margin-bottom: 1rem;
-}
-
-.participant-form input[type="text"] {
+.speedback-form input[type="text"] {
 	flex-grow: 1;
 	padding: 12px 16px;
 	border: 2px solid #e0e0e0;
@@ -76,14 +54,14 @@ body {
 	background: #fafafa;
 }
 
-.participant-form input[type="text"]:focus {
+.speedback-form input[type="text"]:focus {
 	border-color: #7b5cff;
 	outline: none;
 	background: #fff;
 	box-shadow: 0 0 0 3px rgba(123, 92, 255, 0.1);
 }
 
-.participant-form button[type="submit"] {
+.speedback-form button[type="submit"] {
 	background: linear-gradient(90deg, #7b5cff 0%, #4f8cff 100%);
 	color: #fff;
 	border: none;
@@ -96,60 +74,22 @@ body {
 	white-space: nowrap;
 }
 
-.participant-form button[type="submit"]:hover {
+.speedback-form button[type="submit"]:hover {
 	background: linear-gradient(90deg, #6a4fd8 0%, #4a7ce8 100%);
 	transform: translateY(-1px);
 	box-shadow: 0 4px 12px rgba(123, 92, 255, 0.3);
 }
 
-.participant-form button[type="submit"]:active {
+.speedback-form button[type="submit"]:active {
 	transform: translateY(0);
 }
 
-.participants-container {
-	margin-bottom: 24px;
-}
-
-.container-title {
-	color: #555;
-	border-bottom: 2px solid #e2e8f0;
-	padding-bottom: 0.5rem;
-	margin-bottom: 1rem;
-	font-size: 1.25rem;
-	font-weight: 600;
-}
-
-.participant-item {
-	display: flex;
-	justify-content: space-between;
-}
-
-.btn-remove {
-	background: none;
-	border: none;
-	color: #7b5cff;
-	font-size: 1rem;
-	font-weight: bold;
-	margin-left: 8px;
-	cursor: pointer;
-	width: 28px;
-	height: 28px;
-	border-radius: 50%;
-}
-
-.btn-remove:hover,
-.btn-remove:focus {
-	background: rgba(123, 92, 255, 0.1);
-	color: #4f37d0;
-	outline: none;
-}
-
-.participant-form ul {
+.speedback-form ul {
 	list-style: none;
 	padding: 0;
 }
 
-.participant-form li {
+.speedback-form li {
 	padding: 8px 12px;
 	margin: 8px 0;
 	background-color: #f8f9fa;
@@ -161,82 +101,7 @@ body {
 	transition: all 0.2s ease;
 }
 
-.participant-form li:hover {
+.speedback-form li:hover {
 	background-color: #f0f2ff;
 	transform: translateX(2px);
-}
-
-.error-message {
-	color: #e74c3c;
-	margin-top: 0.25rem;
-	font-size: 0.9rem;
-	text-align: left;
-	padding: 8px 12px;
-	background: #fdf2f2;
-	border-radius: 6px;
-}
-
-.rounds-container > div {
-	margin-bottom: 24px;
-	padding: 16px;
-	background: #fff;
-	border-radius: 12px;
-
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-}
-
-.rounds-container > div:last-child {
-	margin-bottom: 0;
-}
-
-.rounds-container h4 {
-	color: #4f8cff;
-}
-
-.rounds-container ul {
-	margin: 0;
-	padding-left: 0;
-}
-
-.rounds-container li {
-	background: #f8f9fa;
-	color: #333;
-	padding: 8px 12px;
-	font-size: 0.95rem;
-	border-left: 3px solid #4f8cff;
-	margin: 8px 0;
-	border-radius: 6px;
-}
-
-.rounds-container li:hover {
-	background: #f0f2ff;
-}
-
-/* Content Layout (Participants & Rounds) */
-.content-wrapper {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 2rem;
-	margin-top: 2rem;
-}
-
-@media (max-width: 768px) {
-	.content-wrapper {
-		grid-template-columns: 1fr;
-	}
-
-	.participant-form {
-		margin: 20px;
-		padding: 24px 20px;
-		max-width: none;
-	}
-
-	.participant-form form {
-		flex-direction: column;
-		gap: 8px;
-	}
-
-	.participant-form button[type="submit"] {
-		width: 100%;
-	}
 }
