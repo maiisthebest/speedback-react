@@ -34,15 +34,16 @@ const PromptGenerator = () => {
 				onClick={() => setIsExpanded(!isExpanded)}
 				type="button"
 			>
-				<h3>Need help coming up with feedback prompts?</h3>
+				<h3>💡 Need help coming up with feedback prompts?</h3>
 				<span className="accordion-icon">{isExpanded ? "▾" : "▸"}</span>
 			</button>
 
 			<div className="accordion-content">
 				<p className="prompt-helper-text">
-					Giving feedback doesn’t have to be hard. Type in a topic and
-					we’ll suggest helpful prompts you can use in your speedback
-					session.
+					Giving feedback doesn’t have to be hard. Type a topic like
+					communication, leadership, or problem solving and our AI
+					will help generate some feedback prompts to guide your
+					conversation.
 				</p>
 				<form
 					onSubmit={(e) => {
@@ -56,11 +57,11 @@ const PromptGenerator = () => {
 					<input
 						id="topic-input"
 						type="text"
-						placeholder="e.g. communication, leadership, problem solving"
+						placeholder="Topic e.g. communication, leadership, problem solving"
 						onChange={(e) => setTopic(e.target.value)}
 						value={topic}
 					/>
-					<button type="submit">Suggest</button>
+					<button type="submit">Generate</button>
 				</form>
 
 				{prompts.length > 0 && (

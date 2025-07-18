@@ -58,7 +58,7 @@
 }
 
 .rounds-container > div:last-child {
-	margin-bottom: 0;
+	margin-bottom: 1rem;
 }
 
 .rounds-container h4 {

@@ -14,21 +14,21 @@
 	justify-content: space-between;
 	align-items: center;
 	padding: 15px 20px;
-	background-color: transparent; /* Remove background color */
-	border-bottom: 1px solid #e0e0e0; /* Add a subtle separator */
+	background-color: transparent;
+	border-bottom: 1px solid #e0e0e0;
 	border-top: none;
 	border-left: none;
 	border-right: none;
 	cursor: pointer;
-	font-size: 1.1rem; /* Slightly larger for better hierarchy */
+	font-size: 1.1rem;
 	font-weight: 600;
-	color: #333; /* More neutral color */
+	color: #333;
 	text-align: left;
 	transition: background-color 0.2s ease;
 }
 
 .accordion-header:hover {
-	background-color: #f8f9fa; /* Subtle hover effect */
+	background-color: #f8f9fa;
 }
 
 .prompt-helper-text {
@@ -40,17 +40,12 @@
 .accordion-header h3 {
 	margin: 0;
 	font-size: 0.95rem;
-	font-weight: 600;
-	color: #2d72d9;
+	color: #4f8cff;
 }
 
 .accordion-icon {
-	color: #555; /* More neutral color */
+	color: #555;
 	transition: transform 0.2s ease;
-}
-
-.prompt-generator-accordion.expanded .accordion-icon {
-	transform: rotate(90deg); /* Rotate to indicate open state */
 }
 
 .accordion-content {
