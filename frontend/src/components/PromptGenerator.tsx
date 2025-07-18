@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./PromptGenerator.css";
-import { ChevronDown, ChevronRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 const PromptGenerator = () => {
 	const baseUrl = import.meta.env.VITE_BACKEND_URL;
@@ -36,12 +36,11 @@ const PromptGenerator = () => {
 				type="button"
 			>
 				<h3>💡 Need help with giving feedback?</h3>
-				<span className="accordion-icon">
-					{isExpanded ? (
-						<ChevronDown size={20} />
-					) : (
-						<ChevronRight size={20} />
-					)}
+				<span
+					className={`accordion-icon ${isExpanded ? "rotated" : ""}`}
+					aria-hidden="true"
+				>
+					<ChevronRight size={20} />
 				</span>
 			</button>
 
