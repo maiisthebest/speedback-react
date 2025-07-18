@@ -15,7 +15,7 @@ export const generateFeedbackPrompts = async (topic) => {
 		const responseText = await result.response.text();
 		return responseText
 			.split("\n")
-			.map((line) => line.trim())
+			.map((line) => line.trim().replace(/^\*+\s*/, ""))
 			.filter(Boolean);
 	} catch (error) {
 		console.error("Error generating topics: ", error);
