@@ -31,7 +31,9 @@ const PromptGenerator = () => {
 					handleSuggestPrompts();
 				}}
 			>
-				<label htmlFor="topic-input">Topic</label>
+				<label htmlFor="topic-input" className="visually-hidden">
+					Topic
+				</label>
 				<input
 					id="topic-input"
 					type="text"

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./SpeedbackForm.css";
 import { generateRounds } from "./roundRobin";
+import PromptGenerator from "./PromptGenerator";
 
 const SpeedbackForm = () => {
 	const [participantName, setParticipantName] = useState("");
@@ -48,6 +49,8 @@ const SpeedbackForm = () => {
 				Quickly pair up your team for fun, speed-dating style feedback
 				rounds. Just add names and let the magic happen ⚡️
 			</p>
+
+			<PromptGenerator />
 
 			<div className="participant-form-wrapper">
 				<form

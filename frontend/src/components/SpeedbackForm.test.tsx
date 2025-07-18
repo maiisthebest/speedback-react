@@ -22,7 +22,10 @@ describe("SpeedbackForm", () => {
 	it("adds a participant when Add button is clicked", async () => {
 		render(<SpeedbackForm />);
 
-		await user.type(screen.getByRole("textbox"), "John Smith");
+		await user.type(
+			screen.getByRole("textbox", { name: "Participant Name" }),
+			"John Smith",
+		);
 		await user.click(screen.getByRole("button", { name: "Add" }));
 
 		expect(screen.getAllByRole("listitem")[0]).toHaveTextContent(
@@ -33,7 +36,10 @@ describe("SpeedbackForm", () => {
 	it("adds a participant when the form is submitted", async () => {
 		render(<SpeedbackForm />);
 
-		await user.type(screen.getByRole("textbox"), "John Smith");
+		await user.type(
+			screen.getByRole("textbox", { name: "Participant Name" }),
+			"John Smith",
+		);
 		await user.keyboard("{Enter}");
 
 		expect(screen.getAllByRole("listitem")[0]).toHaveTextContent(
@@ -44,10 +50,16 @@ describe("SpeedbackForm", () => {
 	it("shows the correct number of participants count in the heading", async () => {
 		render(<SpeedbackForm />);
 
-		await user.type(screen.getByRole("textbox"), "Alice");
+		await user.type(
+			screen.getByRole("textbox", { name: "Participant Name" }),
+			"Alice",
+		);
 		await user.keyboard("{Enter}");
 
-		await user.type(screen.getByRole("textbox"), "Bob");
+		await user.type(
+			screen.getByRole("textbox", { name: "Participant Name" }),
+			"Bob",
+		);
 		await user.keyboard("{Enter}");
 
 		expect(screen.getByText("Participants (2)")).toBeInTheDocument();
@@ -56,15 +68,24 @@ describe("SpeedbackForm", () => {
 	it("shows the correct number of rounds count in the heading", async () => {
 		render(<SpeedbackForm />);
 
-		await user.type(screen.getByRole("textbox"), "Alice");
+		await user.type(
+			screen.getByRole("textbox", { name: "Participant Name" }),
+			"Alice",
+		);
 		await user.keyboard("{Enter}");
 
-		await user.type(screen.getByRole("textbox"), "Bob");
+		await user.type(
+			screen.getByRole("textbox", { name: "Participant Name" }),
+			"Bob",
+		);
 		await user.keyboard("{Enter}");
 
 		expect(screen.getByText("Rounds (1)")).toBeInTheDocument();
 
-		await user.type(screen.getByRole("textbox"), "Charlie");
+		await user.type(
+			screen.getByRole("textbox", { name: "Participant Name" }),
+			"Charlie",
+		);
 		await user.keyboard("{Enter}");
 
 		expect(screen.getByText("Rounds (3)")).toBeInTheDocument();
@@ -82,10 +103,16 @@ describe("SpeedbackForm", () => {
 	it("does not add a duplicate participant", async () => {
 		render(<SpeedbackForm />);
 
-		await user.type(screen.getByRole("textbox"), "Alice");
+		await user.type(
+			screen.getByRole("textbox", { name: "Participant Name" }),
+			"Alice",
+		);
 		await user.keyboard("{Enter}");
 
-		await user.type(screen.getByRole("textbox"), "Alice");
+		await user.type(
+			screen.getByRole("textbox", { name: "Participant Name" }),
+			"Alice",
+		);
 		await user.keyboard("{Enter}");
 
 		expect(screen.getAllByText("Alice")).toHaveLength(1);
@@ -95,17 +122,26 @@ describe("SpeedbackForm", () => {
 	it("generates rounds when participants are added", async () => {
 		render(<SpeedbackForm />);
 
-		await user.type(screen.getByRole("textbox"), "Alice");
+		await user.type(
+			screen.getByRole("textbox", { name: "Participant Name" }),
+			"Alice",
+		);
 		await user.keyboard("{Enter}");
 
-		await user.type(screen.getByRole("textbox"), "Bob");
+		await user.type(
+			screen.getByRole("textbox", { name: "Participant Name" }),
+			"Bob",
+		);
 		await user.keyboard("{Enter}");
 
 		expect(screen.getByText("Rounds (1)")).toBeInTheDocument();
 		expect(screen.getByText("Round 1")).toBeInTheDocument();
 		expect(screen.getByText("Alice ↔ Bob")).toBeInTheDocument();
 
-		await user.type(screen.getByRole("textbox"), "Charlie");
+		await user.type(
+			screen.getByRole("textbox", { name: "Participant Name" }),
+			"Charlie",
+		);
 		await user.keyboard("{Enter}");
 
 		expect(screen.getByText("Rounds (3)")).toBeInTheDocument();
@@ -124,13 +160,22 @@ describe("SpeedbackForm", () => {
 	it("removes a participant and recalculates rounds when participants are removed", async () => {
 		render(<SpeedbackForm />);
 
-		await user.type(screen.getByRole("textbox"), "Alice");
+		await user.type(
+			screen.getByRole("textbox", { name: "Participant Name" }),
+			"Alice",
+		);
 		await user.click(screen.getByRole("button", { name: "Add" }));
 
-		await user.type(screen.getByRole("textbox"), "Bob");
+		await user.type(
+			screen.getByRole("textbox", { name: "Participant Name" }),
+			"Bob",
+		);
 		await user.click(screen.getByRole("button", { name: "Add" }));
 
-		await user.type(screen.getByRole("textbox"), "Charlie");
+		await user.type(
+			screen.getByRole("textbox", { name: "Participant Name" }),
+			"Charlie",
+		);
 		await user.click(screen.getByRole("button", { name: "Add" }));
 
 		expect(screen.getByText("Participants (3)")).toBeInTheDocument();
