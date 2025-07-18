@@ -1,6 +1,6 @@
 .prompt-generator-accordion {
 	cursor: pointer;
-	/* border: 1px solid #e0e0e0; */
+	border: 1px solid #e0e0e0;
 	border-radius: 8px;
 	margin-bottom: 1.5rem;
 	overflow: hidden;
@@ -14,34 +14,41 @@
 	justify-content: space-between;
 	align-items: center;
 	padding: 15px 20px;
-	background-color: #f0f2ff;
-	border: none;
+	background-color: transparent; /* Remove background color */
+	border-bottom: 1px solid #e0e0e0; /* Add a subtle separator */
+	border-top: none;
+	border-left: none;
+	border-right: none;
 	cursor: pointer;
-	font-size: 0.95rem;
-	font-weight: 500;
-	color: #2d72d9;
+	font-size: 1.1rem; /* Slightly larger for better hierarchy */
+	font-weight: 600;
+	color: #333; /* More neutral color */
 	text-align: left;
 	transition: background-color 0.2s ease;
 }
 
 .accordion-header:hover {
-	background-color: #e0e5ff;
+	background-color: #f8f9fa; /* Subtle hover effect */
 }
 
 .accordion-header h3 {
 	margin: 0;
 	font-size: 0.95rem;
-	font-weight: 500;
+	font-weight: 600;
 	color: #2d72d9;
 }
 
 .accordion-icon {
-	color: #2d72d9;
+	color: #555; /* More neutral color */
 	transition: transform 0.2s ease;
 }
 
+.prompt-generator-accordion.expanded .accordion-icon {
+	transform: rotate(90deg); /* Rotate to indicate open state */
+}
+
 .accordion-content {
-	/* padding: 0 20px; */
+	padding: 0 20px;
 	max-height: 0;
 	overflow: hidden;
 	transition:
@@ -65,13 +72,13 @@
 	margin-top: 1.5rem;
 }
 
-/* .prompts-display h4 {
-	font-size: 0.6rem;
+.prompts-display h4 {
+	font-size: 1.1rem; /* Consistent with accordion header */
 	color: #555;
 	margin-bottom: 1rem;
-	border-bottom: 2px solid #e2e8f0;
+	border-bottom: 1px solid #e2e8f0; /* Subtle border */
 	padding-bottom: 0.5rem;
-} */
+}
 
 .prompts-display ul {
 	list-style: none;
@@ -79,14 +86,14 @@
 }
 
 .prompts-display li {
-	background-color: #fff;
-	border-left: 4px solid #4f8cff;
+	background-color: #f8f9fa; /* Consistent with participant list items */
+	border-left: 4px solid #7b5cff; /* Consistent accent color */
 	padding: 12px 16px;
 	margin-bottom: 10px;
 	border-radius: 8px;
-	font-size: 0.5rem;
+	font-size: 1rem;
 	color: #333;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 	transition: all 0.2s ease;
 }
 
@@ -95,7 +102,6 @@
 	transform: translateX(2px);
 }
 
-/* Media queries for responsiveness */
 @media (max-width: 768px) {
 	.accordion-content form {
 		flex-direction: column;

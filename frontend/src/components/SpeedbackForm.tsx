@@ -4,7 +4,7 @@ import RoundGenerator from "./RoundGenerator";
 
 const SpeedbackForm = () => {
 	return (
-		<div className="speedback-form">
+		<div className="main-form-container">
 			<h2>Speedback</h2>
 			<p>
 				Quickly pair up your team for fun, speed-dating style feedback

@@ -1,15 +1,13 @@
-.speedback-form {
+.main-form-container {
 	max-width: 700px;
 	margin: 2rem auto;
 	padding: 32px 24px;
 	background: #fff;
 	border-radius: 16px;
-	box-shadow:
-		0 8px 32px rgba(0, 0, 0, 0.12),
-		0 2px 8px rgba(0, 0, 0, 0.08);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Slightly stronger, more consistent shadow */
 }
 
-.speedback-form > p {
+.main-form-container > p {
 	font-size: 1.2rem;
 	color: #444;
 	margin-bottom: 2rem;
@@ -19,7 +17,7 @@
 	margin-right: auto;
 }
 
-.speedback-form h2 {
+.main-form-container h2 {
 	font-size: 2.5rem;
 	font-weight: 800;
 	letter-spacing: 2px;
@@ -28,12 +26,12 @@
 	text-align: center;
 }
 
-.speedback-form ul {
+.main-form-container ul {
 	list-style: none;
 	padding: 0;
 }
 
-.speedback-form li {
+.main-form-container li {
 	padding: 8px 12px;
 	margin: 8px 0;
 	background-color: #f8f9fa;
@@ -45,13 +43,13 @@
 	transition: all 0.2s ease;
 }
 
-.speedback-form li:hover {
+.main-form-container li:hover {
 	background-color: #f0f2ff;
 	transform: translateX(2px);
 }
 
 @media (max-width: 768px) {
-	.speedback-form {
+	.main-form-container {
 		margin: 20px;
 		padding: 24px 20px;
 		max-width: none;
