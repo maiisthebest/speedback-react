@@ -11,8 +11,8 @@ const SpeedbackForm = () => {
 				rounds. Just add names and let the magic happen ⚡️
 			</p>
 
-			<PromptGenerator />
 			<RoundGenerator />
+			<PromptGenerator />
 		</div>
 	);
 };

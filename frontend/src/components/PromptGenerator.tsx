@@ -34,8 +34,8 @@ const PromptGenerator = () => {
 				onClick={() => setIsExpanded(!isExpanded)}
 				type="button"
 			>
-				<h3>Generate Feedback Prompts</h3>
-				<span className="accordion-icon">{isExpanded ? "-" : "+"}</span>
+				<h3>Need help coming up with feedback prompts?</h3>
+				<span className="accordion-icon">{isExpanded ? "▾" : "▸"}</span>
 			</button>
 
 			<div className="accordion-content">
