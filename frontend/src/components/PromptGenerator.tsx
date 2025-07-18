@@ -39,6 +39,11 @@ const PromptGenerator = () => {
 			</button>
 
 			<div className="accordion-content">
+				<p className="prompt-helper-text">
+					Giving feedback doesn’t have to be hard. Type in a topic and
+					we’ll suggest helpful prompts you can use in your speedback
+					session.
+				</p>
 				<form
 					onSubmit={(e) => {
 						e.preventDefault();
