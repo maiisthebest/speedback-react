@@ -1,17 +1,3 @@
-.visually-hidden {
-	border: 0;
-	/* Deprecated but provides legacy browser support */
-	clip: rect(0 0 0 0);
-	clip-path: inset(50%);
-	height: 1px;
-	margin: -1px;
-	overflow: hidden;
-	padding: 0;
-	position: absolute;
-	width: 1px;
-	white-space: nowrap;
-}
-
 .participant-form-wrapper form {
 	display: flex;
 	gap: 0.5rem;
@@ -61,16 +47,6 @@
 	background: rgba(123, 92, 255, 0.1);
 	color: #4f37d0;
 	outline: none;
-}
-
-.error-message {
-	color: #e74c3c;
-	margin-top: 0.25rem;
-	font-size: 0.9rem;
-	text-align: left;
-	padding: 8px 12px;
-	background: #fdf2f2;
-	border-radius: 6px;
 }
 
 .rounds-container > div {
