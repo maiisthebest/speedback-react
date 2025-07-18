@@ -4,7 +4,7 @@
 	padding: 32px 24px;
 	background: #fff;
 	border-radius: 16px;
-	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Slightly stronger, more consistent shadow */
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .main-form-container > p {

@@ -12,7 +12,9 @@ const SpeedbackForm = () => {
 			</p>
 
 			<RoundGenerator />
-			<PromptGenerator />
+			<section>
+				<PromptGenerator />
+			</section>
 		</div>
 	);
 };

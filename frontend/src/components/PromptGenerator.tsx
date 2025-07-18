@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./PromptGenerator.css";
+import { ChevronDown, ChevronRight } from "lucide-react";
 
 const PromptGenerator = () => {
 	const baseUrl = import.meta.env.VITE_BACKEND_URL;
@@ -34,16 +35,20 @@ const PromptGenerator = () => {
 				onClick={() => setIsExpanded(!isExpanded)}
 				type="button"
 			>
-				<h3>💡 Need help coming up with feedback prompts?</h3>
-				<span className="accordion-icon">{isExpanded ? "▾" : "▸"}</span>
+				<h3>💡 Need help with giving feedback?</h3>
+				<span className="accordion-icon">
+					{isExpanded ? (
+						<ChevronDown size={20} />
+					) : (
+						<ChevronRight size={20} />
+					)}
+				</span>
 			</button>
 
 			<div className="accordion-content">
 				<p className="prompt-helper-text">
-					Giving feedback doesn’t have to be hard. Type a topic like
-					communication, leadership, or problem solving and our AI
-					will help generate some feedback prompts to guide your
-					conversation.
+					Just type in a topic (like communication or problem solving)
+					and our AI will suggest some questions to get you started.
 				</p>
 				<form
 					onSubmit={(e) => {
