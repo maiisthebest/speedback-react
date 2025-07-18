@@ -1,20 +1,114 @@
-.prompt-generator-form-wrapper form {
+.prompt-generator-accordion {
+	border: 1px solid #e0e0e0;
+	border-radius: 8px;
+	margin-bottom: 1.5rem;
+	overflow: hidden;
+	background-color: #fdfdfd;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.accordion-header {
+	width: 100%;
 	display: flex;
-	gap: 0.5rem;
+	justify-content: space-between;
+	align-items: center;
+	padding: 15px 20px;
+	background-color: #f0f2ff;
+	border: none;
+	cursor: pointer;
+	font-size: 1.2rem;
+	font-weight: 600;
+	color: #2d72d9;
+	text-align: left;
+	transition: background-color 0.2s ease;
+}
+
+.accordion-header:hover {
+	background-color: #e0e5ff;
+}
+
+.accordion-header h3 {
+	margin: 0;
+	font-size: 1.2rem;
+	color: #2d72d9;
+}
+
+.accordion-icon {
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: #2d72d9;
+	transition: transform 0.2s ease;
+}
+
+.prompt-generator-accordion.expanded .accordion-icon {
+	transform: rotate(45deg); /* Rotate '+' to 'x' or just change to '-' */
+}
+
+.accordion-content {
+	padding: 0 20px;
+	max-height: 0;
+	overflow: hidden;
+	transition:
+		max-height 0.3s ease-out,
+		padding 0.3s ease-out;
+}
+
+.prompt-generator-accordion.expanded .accordion-content {
+	max-height: 500px; /* Adjust based on content height */
+	padding: 20px;
+}
+
+/* Form styles within the accordion content */
+.accordion-content form {
+	display: flex;
+	gap: 0.75rem;
+	margin-bottom: 1.5rem;
+	flex-wrap: wrap;
+}
+
+/* Prompts display within the accordion content */
+.prompts-display {
+	margin-top: 1.5rem;
+}
+
+.prompts-display h4 {
+	font-size: 1.25rem;
+	color: #555;
 	margin-bottom: 1rem;
+	border-bottom: 2px solid #e2e8f0;
+	padding-bottom: 0.5rem;
 }
 
-.prompts-container {
-	margin-bottom: 24px;
+.prompts-display ul {
+	list-style: none;
+	padding: 0;
 }
 
+.prompts-display li {
+	background-color: #fff;
+	border-left: 4px solid #4f8cff;
+	padding: 12px 16px;
+	margin-bottom: 10px;
+	border-radius: 8px;
+	font-size: 1rem;
+	color: #333;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+	transition: all 0.2s ease;
+}
+
+.prompts-display li:hover {
+	background-color: #f0f2ff;
+	transform: translateX(2px);
+}
+
+/* Media queries for responsiveness */
 @media (max-width: 768px) {
-	.prompt-generator-form-wrapper form {
+	.accordion-content form {
 		flex-direction: column;
 		gap: 8px;
 	}
 
-	.prompt-generator-form-wrapper button[type="submit"] {
+	.accordion-content button[type="submit"] {
 		width: 100%;
 	}
 }
