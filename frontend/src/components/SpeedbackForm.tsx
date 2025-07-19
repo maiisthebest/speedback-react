@@ -7,12 +7,14 @@ const SpeedbackForm = () => {
 		<div className="speedback-form">
 			<h2>Speedback</h2>
 			<p>
-				Quickly pair up your team for fun, speed-dating style feedback
-				rounds. Just add names and let the magic happen ⚡️
+				A fun way to generate fast feedback rounds for your team. Just
+				add names, and we’ll handle the rest ⚡️
 			</p>
 
-			<PromptGenerator />
 			<RoundGenerator />
+			<section>
+				<PromptGenerator />
+			</section>
 		</div>
 	);
 };

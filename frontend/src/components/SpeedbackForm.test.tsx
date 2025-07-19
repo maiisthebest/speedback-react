@@ -10,7 +10,7 @@ describe("SpeedbackForm", () => {
 			screen.getByRole("heading", { name: "Speedback" }),
 		).toBeInTheDocument();
 		expect(
-			screen.getByText(/Quickly pair up your team/i),
+			screen.getByText(/Just add names, and we’ll handle the rest/i),
 		).toBeInTheDocument();
 
 		expect(
