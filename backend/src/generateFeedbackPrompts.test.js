@@ -21,7 +21,7 @@ const { mockGetGenerativeModel, mockGenerateContent } = await import(
 );
 
 describe("generateFeedbackPrompts", () => {
-	it("should return an array of prompts based on a topic", async () => {
+	it("returns an array of prompts based on a topic", async () => {
 		const mockApiResponse = {
 			response: {
 				text: () =>
@@ -45,5 +45,17 @@ describe("generateFeedbackPrompts", () => {
 			"2. Second prompt",
 			"3. Third prompt",
 		]);
+	});
+
+	it("throws an error when the AI service fails", async () => {
+		vi.stubEnv("GOOGLE_API_KEY", "test-key");
+
+		mockGenerateContent.mockRejectedValue(
+			new Error("AI service unavailable"),
+		);
+
+		await expect(generateFeedbackPrompts("any topic")).rejects.toThrow(
+			"Failed to generate prompts from GenAI",
+		);
 	});
 });

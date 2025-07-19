@@ -6,29 +6,54 @@ const PromptSuggestions = () => {
 
 	const [topic, setTopic] = useState("");
 	const [prompts, setPrompts] = useState<string[]>([]);
+	const [error, setError] = useState<string | null>(null);
 
 	const handleSuggestPrompts = async () => {
+		const trimmedTopic = topic.trim();
+
+		if (!trimmedTopic) {
+			setError("Topic cannot be empty");
+			return;
+		}
+
 		try {
 			const res = await fetch(`${baseUrl}/api/feedback-prompts`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: JSON.stringify({ topic }),
+				body: JSON.stringify({ topic: trimmedTopic }),
 			});
+
+			if (!res.ok) {
+				const backendErrorMsg = await res.json();
+				throw new Error(backendErrorMsg.error || res.statusText);
+			}
+
+			setError(null);
 
 			const data = await res.json();
 			setPrompts(data.prompts);
 		} catch (error) {
 			console.error("Error generating prompts:", error);
+			setError(
+				"An error occurred while generating prompts. Please try again.",
+			);
+
+			setPrompts([]);
 		}
+	};
+
+	const handleTopicInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setTopic(e.target.value);
+		setError(null);
 	};
 
 	return (
 		<div className="prompt-suggestions-container">
 			<p className="prompt-helper-text">
 				Giving feedback can be tricky. Just type in a topic like
-				communication or problem solving, and our AI will suggest some
+				communication or problem solving, and our AI will generate some
 				prompt questions to help you get started.
 			</p>
 			<form
@@ -44,10 +69,11 @@ const PromptSuggestions = () => {
 					id="topic-input"
 					type="text"
 					placeholder="e.g. communication, leadership, problem solving"
-					onChange={(e) => setTopic(e.target.value)}
+					onChange={handleTopicInputChange}
 					value={topic}
 				/>
-				<button type="submit">Suggest</button>
+				<button type="submit">Generate</button>
+				{error && <p className="error-message">{error}</p>}
 			</form>
 
 			{prompts.length > 0 && (

@@ -18,6 +18,6 @@ export const generateFeedbackPrompts = async (topic) => {
 			.map((line) => line.trim().replace(/^\*+\s*/, ""))
 			.filter(Boolean);
 	} catch (error) {
-		console.error("Error generating topics: ", error);
+		throw new Error("Failed to generate prompts from GenAI: ", error);
 	}
 };
