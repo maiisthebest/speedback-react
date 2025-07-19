@@ -44,12 +44,6 @@
 	transition: all 0.3s ease;
 }
 
-.accordion-content form {
-	display: flex;
-	gap: 0.5rem;
-	flex-wrap: wrap;
-}
-
 .accordion-icon {
 	transition: transform 0.3s ease;
 	display: flex;
@@ -58,12 +52,6 @@
 
 .accordion-icon.rotated {
 	transform: rotate(90deg);
-}
-
-.prompt-helper-text {
-	font-size: 0.85rem;
-	color: #666;
-	margin: 0 16px 12px;
 }
 
 @media (max-width: 768px) {
