@@ -7,6 +7,7 @@ const PromptSuggestions = () => {
 	const [topic, setTopic] = useState("");
 	const [prompts, setPrompts] = useState<string[]>([]);
 	const [error, setError] = useState<string | null>(null);
+	const [loading, setLoading] = useState(false);
 
 	const handleSuggestPrompts = async () => {
 		const trimmedTopic = topic.trim();
@@ -15,6 +16,10 @@ const PromptSuggestions = () => {
 			setError("Topic cannot be empty");
 			return;
 		}
+
+		setLoading(true);
+		setError(null);
+		setPrompts([]);
 
 		try {
 			const res = await fetch(`${baseUrl}/api/feedback-prompts`, {
@@ -30,8 +35,6 @@ const PromptSuggestions = () => {
 				throw new Error(backendErrorMsg.error || res.statusText);
 			}
 
-			setError(null);
-
 			const data = await res.json();
 			setPrompts(data.prompts);
 		} catch (error) {
@@ -39,8 +42,8 @@ const PromptSuggestions = () => {
 			setError(
 				"An error occurred while generating prompts. Please try again.",
 			);
-
-			setPrompts([]);
+		} finally {
+			setLoading(false);
 		}
 	};
 
@@ -51,11 +54,18 @@ const PromptSuggestions = () => {
 
 	return (
 		<div className="prompt-suggestions-container">
+			{loading && (
+				<div className="spinner-overlay">
+					<div className="spinner" />
+				</div>
+			)}
+
 			<p className="prompt-helper-text">
 				Giving feedback can be tricky. Just type in a topic like
 				communication or problem solving, and our AI will generate some
 				prompt questions to help you get started.
 			</p>
+
 			<form
 				onSubmit={(e) => {
 					e.preventDefault();
