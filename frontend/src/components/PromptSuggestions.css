@@ -5,6 +5,8 @@
 .prompt-suggestions-container form {
 	display: flex;
 	gap: 0.5rem;
+	margin-left: auto;
+	margin-right: auto;
 	flex-wrap: wrap;
 }
 

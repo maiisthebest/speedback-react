@@ -1,7 +1,11 @@
 .participant-form-wrapper form {
 	display: flex;
 	gap: 0.5rem;
+	max-width: 400px;
+	margin-left: auto;
+	margin-right: auto;
 	margin-bottom: 1rem;
+	flex-wrap: wrap;
 }
 
 .content-wrapper {
