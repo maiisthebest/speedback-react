@@ -4,24 +4,24 @@
 
 .prompt-suggestions-container form {
 	display: flex;
-	gap: 0.5rem;
+	gap: var(--space-sm);
 	margin-left: auto;
 	margin-right: auto;
 	flex-wrap: wrap;
 }
 
 .prompt-helper-text {
-	font-size: 0.85rem;
-	color: #666;
-	margin: 0 16px 12px;
+	font-size: var(--font-size-small);
+	color: var(--text-color-light);
+	margin: 0 var(--space-md) var(--space-md);
 }
 
 .prompts-container {
-	margin-top: 1rem;
+	margin-top: var(--space-md);
 }
 
 .prompts-container li {
-	font-size: 0.85rem;
+	font-size: var(--font-size-small);
 }
 
 .spinner-overlay {
@@ -35,7 +35,7 @@
 	justify-content: center;
 	align-items: center;
 	z-index: 10;
-	border-radius: 8px;
+	border-radius: var(--border-radius-md);
 }
 
 .spinner {
@@ -43,7 +43,7 @@
 	width: 36px;
 	height: 36px;
 	border-radius: 50%;
-	border-left-color: #09f;
+	border-left-color: var(--secondary-color);
 	animation: spin 1s ease infinite;
 }
 

@@ -1,18 +1,16 @@
 .speedback-form {
 	max-width: 700px;
-	margin: 2rem auto;
-	padding: 32px 24px;
-	background: #fff;
-	border-radius: 16px;
-	box-shadow:
-		0 8px 32px rgba(0, 0, 0, 0.12),
-		0 2px 8px rgba(0, 0, 0, 0.08);
+	margin: var(--space-lg) auto;
+	padding: var(--space-xl) var(--space-lg);
+	background: var(--background-color);
+	border-radius: var(--border-radius-lg);
+	box-shadow: var(--box-shadow-md);
 }
 
 .speedback-form > p {
-	font-size: 1.2rem;
+	font-size: var(--font-size-medium);
 	color: #444;
-	margin-bottom: 2rem;
+	margin-bottom: var(--space-lg);
 	text-align: center;
 	max-width: 500px;
 	margin-left: auto;
@@ -20,11 +18,11 @@
 }
 
 .speedback-form h2 {
-	font-size: 2.5rem;
+	font-size: var(--font-size-xl);
 	font-weight: 800;
 	letter-spacing: 2px;
-	color: #2d72d9;
-	margin-bottom: 0.5rem;
+	color: var(--secondary-color-dark);
+	margin-bottom: var(--space-sm);
 	text-align: center;
 }
 
@@ -34,14 +32,14 @@
 }
 
 .speedback-form li {
-	padding: 8px 12px;
-	margin: 8px 0;
-	background-color: #f8f9fa;
-	border-radius: 8px;
-	font-size: 1rem;
-	color: #333;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-	border-left: 4px solid #7b5cff;
+	padding: var(--space-sm) var(--space-md);
+	margin: var(--space-sm) 0;
+	background-color: var(--background-color-light);
+	border-radius: var(--border-radius-md);
+	font-size: var(--font-size-base);
+	color: var(--text-color);
+	box-shadow: var(--box-shadow-sm);
+	border-left: 4px solid var(--primary-color);
 	transition: all 0.2s ease;
 }
 
@@ -52,8 +50,8 @@
 
 @media (max-width: 768px) {
 	.speedback-form {
-		margin: 20px;
-		padding: 24px 20px;
+		margin: var(--space-md);
+		padding: var(--space-lg) var(--space-md);
 		max-width: none;
 	}
 }

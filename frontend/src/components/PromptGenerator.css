@@ -1,10 +1,10 @@
 .prompt-generator-accordion {
-	border: 1px solid #e0e0e0;
-	border-radius: 8px;
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius-md);
 	overflow: hidden;
 	background-color: #fdfdfd;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-	margin-top: 16px;
+	box-shadow: var(--box-shadow-sm);
+	margin-top: var(--space-md);
 }
 
 .accordion-header {
@@ -13,9 +13,9 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 10px 20px;
+	padding: var(--space-sm) var(--space-md);
 	background-color: transparent;
-	color: #666;
+	color: var(--text-color-light);
 	transition: background-color 0.2s ease;
 }
 
@@ -24,17 +24,17 @@
 }
 
 .accordion-header h3 {
-	font-size: 1rem;
+	font-size: var(--font-size-base);
 	font-weight: 500;
 }
 
 .accordion-header:hover {
-	background-color: #f8f9fa;
+	background-color: var(--background-color-light);
 }
 
 details[open] .accordion-content {
-	padding: 20px;
-	border-top: 1px solid #e0e0e0;
+	padding: var(--space-md);
+	border-top: 1px solid var(--border-color);
 }
 
 .accordion-icon {
