@@ -6,7 +6,7 @@ const PromptGenerator = () => {
 	return (
 		<details className="prompt-generator-accordion">
 			<summary className="accordion-header">
-				<h3>💡 Need help with giving feedback?</h3>
+				<h3>💡 Need help preparing for the session?</h3>
 				<span className="accordion-icon" aria-hidden="true">
 					<ChevronRight size={20} />
 				</span>

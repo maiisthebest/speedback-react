@@ -31,9 +31,7 @@ describe("PromptSuggestions", () => {
 		render(<PromptSuggestions />);
 
 		expect(
-			screen.getByText(
-				/Just type in a topic like communication or problem solving, and our AI will generate some prompt questions to help you get started./i,
-			),
+			screen.getByText(/Giving feedback can be tricky./i),
 		).toBeInTheDocument();
 
 		expect(

@@ -9,7 +9,7 @@ describe("PromptGenerator", () => {
 		render(<PromptGenerator />);
 
 		const heading = screen.getByRole("heading", {
-			name: "💡 Need help with giving feedback?",
+			name: "💡 Need help preparing for the session?",
 		});
 		expect(heading).toBeInTheDocument();
 

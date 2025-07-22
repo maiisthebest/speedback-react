@@ -61,9 +61,11 @@ const PromptSuggestions = () => {
 			)}
 
 			<p className="prompt-helper-text">
-				Giving feedback can be tricky. Just type in a topic like
-				communication or problem solving, and our AI will generate some
-				prompt questions to help you get started.
+				Giving feedback can be tricky. But it’s one of the most valuable
+				gifts you can offer someone. The best feedback is actionable,
+				specific, and kind. We’re here to help. Just type in a topic or
+				area like collaboration or leadership and we’ll generate a few
+				helpful prompts to kickstart your thinking ✨
 			</p>
 
 			<form
