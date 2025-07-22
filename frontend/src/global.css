@@ -76,3 +76,14 @@ input[type="text"]:focus {
 	background: #fff;
 	box-shadow: 0 0 0 3px rgba(123, 92, 255, 0.1);
 }
+
+@media (max-width: 768px) {
+	form {
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	button[type="submit"] {
+		width: 100%;
+	}
+}

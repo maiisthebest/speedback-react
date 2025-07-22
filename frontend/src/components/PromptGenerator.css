@@ -1,15 +1,10 @@
-details.prompt-generator-accordion {
+.prompt-generator-accordion {
 	border: 1px solid #e0e0e0;
 	border-radius: 8px;
 	overflow: hidden;
 	background-color: #fdfdfd;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 	margin-top: 16px;
-}
-
-details[open] .accordion-content {
-	padding: 20px;
-	border-top: 1px solid #e0e0e0;
 }
 
 .accordion-header {
@@ -20,10 +15,8 @@ details[open] .accordion-content {
 	align-items: center;
 	padding: 10px 20px;
 	background-color: transparent;
-	border: none;
 	color: #666;
 	transition: background-color 0.2s ease;
-	list-style: none;
 }
 
 .accordion-header::-webkit-details-marker {
@@ -39,9 +32,9 @@ details[open] .accordion-content {
 	background-color: #f8f9fa;
 }
 
-.accordion-content {
-	padding: 0 20px;
-	animation: fadeIn 0.3s ease;
+details[open] .accordion-content {
+	padding: 20px;
+	border-top: 1px solid #e0e0e0;
 }
 
 .accordion-icon {
@@ -52,15 +45,4 @@ details[open] .accordion-content {
 
 details[open] .accordion-icon {
 	transform: rotate(90deg);
-}
-
-@media (max-width: 768px) {
-	.accordion-content form {
-		flex-direction: column;
-		gap: 8px;
-	}
-
-	.accordion-content button[type="submit"] {
-		width: 100%;
-	}
 }

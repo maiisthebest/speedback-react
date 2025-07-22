@@ -92,13 +92,4 @@
 	.content-wrapper {
 		grid-template-columns: 1fr;
 	}
-
-	.participant-form-wrapper form {
-		flex-direction: column;
-		gap: 8px;
-	}
-
-	.participant-form-wrapper button[type="submit"] {
-		width: 100%;
-	}
 }
