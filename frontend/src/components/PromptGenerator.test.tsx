@@ -1,15 +1,25 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 import PromptGenerator from "./PromptGenerator";
 
 describe("PromptGenerator", () => {
-	it("renders correctly", () => {
+	it("renders correctly and toggles prompt accordion visibility on click", async () => {
+		const user = userEvent.setup();
 		render(<PromptGenerator />);
 
-		expect(
-			screen.getByRole("button", {
-				name: "💡 Need help with giving feedback?",
-			}),
-		).toBeInTheDocument();
+		const heading = screen.getByRole("heading", {
+			name: "💡 Need help with giving feedback?",
+		});
+		expect(heading).toBeInTheDocument();
+
+		const content = screen.getByText(/giving feedback can be tricky/i);
+		expect(content).not.toBeVisible();
+
+		await user.click(heading);
+		expect(content).toBeVisible();
+
+		await user.click(heading);
+		expect(content).not.toBeVisible();
 	});
 });
