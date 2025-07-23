@@ -54,7 +54,11 @@ const PromptSuggestions = () => {
 	return (
 		<div className="prompt-suggestions-container">
 			{loading && (
-				<div className="spinner-overlay">
+				<div
+					className="spinner-overlay"
+					role="status"
+					aria-label="Loading..."
+				>
 					<div className="spinner" />
 				</div>
 			)}
