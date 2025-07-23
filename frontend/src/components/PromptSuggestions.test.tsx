@@ -178,7 +178,7 @@ describe("PromptSuggestions", () => {
 			json: async () => ({ prompts: ["Prompt1"] }),
 		} as Response);
 
-		expect(await screen.findByText("Prompt1")).toBeInTheDocument(); // Wait for content to appear
+		expect(await screen.findByText("Prompt1")).toBeInTheDocument();
 		expect(screen.queryByLabelText("Loading...")).not.toBeInTheDocument();
 	});
 });
