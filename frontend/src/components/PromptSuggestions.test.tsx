@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import PromptSuggestions from "./PromptSuggestions";
 import {
 	afterEach,
@@ -150,41 +150,5 @@ describe("PromptSuggestions", () => {
 				"An error occurred while generating prompts. Please try again.",
 			),
 		).toBeInTheDocument();
-	});
-
-	it("logs the specific error message from the backend to the console", async () => {
-		const backendErrorMessage = "Specific backend error.";
-		const consoleErrorSpy = vi
-			.spyOn(console, "error")
-			.mockImplementation(() => {});
-
-		fetchSpy.mockResolvedValueOnce({
-			ok: false,
-			status: 400,
-			json: async () => ({ error: backendErrorMessage }),
-		} as Response);
-
-		render(<PromptSuggestions />);
-
-		await user.type(
-			screen.getByRole("textbox", { name: "Topic" }),
-			"a valid topic",
-		);
-		await user.click(screen.getByRole("button", { name: "Generate" }));
-
-		await waitFor(() => {
-			expect(consoleErrorSpy).toHaveBeenCalledWith(
-				"Error generating prompts:",
-				expect.objectContaining({ message: backendErrorMessage }),
-			);
-		});
-
-		expect(
-			screen.getByText(
-				"An error occurred while generating prompts. Please try again.",
-			),
-		).toBeInTheDocument();
-
-		consoleErrorSpy.mockRestore();
 	});
 });

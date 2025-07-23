@@ -37,8 +37,7 @@ const PromptSuggestions = () => {
 
 			const data = await res.json();
 			setPrompts(data.prompts);
-		} catch (error) {
-			console.error("Error generating prompts:", error);
+		} catch {
 			setError(
 				"An error occurred while generating prompts. Please try again.",
 			);

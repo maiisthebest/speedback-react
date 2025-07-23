@@ -4,7 +4,7 @@ import { handleFeedbackPromptsRequest } from "../src/requestHandlers/handleFeedb
 
 vi.mock("../src/requestHandlers/handleFeedbackPromptsRequest.js");
 
-describe("POST /api/feedback-prompts Vercel handler", () => {
+describe("POST /feedback-prompts", () => {
 	it("should return 200 and prompts for a valid POST request", async () => {
 		const mockPrompts = ["Prompt 1", "Prompt 2"];
 		vi.mocked(handleFeedbackPromptsRequest).mockImplementation(() => {

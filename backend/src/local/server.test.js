@@ -7,7 +7,7 @@ vi.mock("../requestHandlers/handleFeedbackPromptsRequest.js");
 
 const request = supertest(app);
 
-describe("POST /api/feedback-prompts", () => {
+describe("POST /feedback-prompts for local Express server", () => {
 	it("should return 200 and prompts for a valid POST request", async () => {
 		const mockPrompts = ["Prompt 1", "Prompt 2"];
 
