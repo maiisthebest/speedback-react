@@ -54,8 +54,8 @@
 }
 
 .rounds-container > div {
-	margin-bottom: var(--space-lg);
-	padding: var(--space-md);
+	margin-bottom: var(--space-sm);
+	padding: var(--space-sm);
 	background: var(--background-color);
 	border-radius: 12px;
 	box-shadow: var(--box-shadow-sm);
