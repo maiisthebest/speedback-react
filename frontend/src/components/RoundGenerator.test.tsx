@@ -65,32 +65,6 @@ describe("RoundGenerator", () => {
 		expect(screen.getByText("Participants (2)")).toBeInTheDocument();
 	});
 
-	it("shows the correct number of rounds count in the heading", async () => {
-		render(<RoundGenerator />);
-
-		await user.type(
-			screen.getByRole("textbox", { name: "Participant Name" }),
-			"Alice",
-		);
-		await user.keyboard("{Enter}");
-
-		await user.type(
-			screen.getByRole("textbox", { name: "Participant Name" }),
-			"Bob",
-		);
-		await user.keyboard("{Enter}");
-
-		expect(screen.getByText("Rounds (1)")).toBeInTheDocument();
-
-		await user.type(
-			screen.getByRole("textbox", { name: "Participant Name" }),
-			"Charlie",
-		);
-		await user.keyboard("{Enter}");
-
-		expect(screen.getByText("Rounds (3)")).toBeInTheDocument();
-	});
-
 	it("does not add a participant if the name is empty", async () => {
 		render(<RoundGenerator />);
 
@@ -155,6 +129,68 @@ describe("RoundGenerator", () => {
 		expect(screen.getByText("Round 3")).toBeInTheDocument();
 		expect(screen.getByText("Alice ↔ Bob")).toBeInTheDocument();
 		expect(screen.getByText("Charlie sits out")).toBeInTheDocument();
+	});
+
+	it("shows the correct number of rounds count in the heading", async () => {
+		render(<RoundGenerator />);
+
+		await user.type(
+			screen.getByRole("textbox", { name: "Participant Name" }),
+			"Alice",
+		);
+		await user.keyboard("{Enter}");
+
+		await user.type(
+			screen.getByRole("textbox", { name: "Participant Name" }),
+			"Bob",
+		);
+		await user.keyboard("{Enter}");
+
+		expect(
+			screen.getByRole("heading", { name: "Rounds (1)" }),
+		).toBeInTheDocument();
+
+		await user.type(
+			screen.getByRole("textbox", { name: "Participant Name" }),
+			"Charlie",
+		);
+		await user.keyboard("{Enter}");
+
+		expect(screen.getByText("Rounds (3)")).toBeInTheDocument();
+	});
+
+	it("does not show rounds if there is 1 participant or less", async () => {
+		render(<RoundGenerator />);
+
+		expect(
+			screen.queryByRole("heading", { name: "Rounds (0)" }),
+		).not.toBeInTheDocument();
+
+		await user.type(
+			screen.getByRole("textbox", { name: "Participant Name" }),
+			"Alice",
+		);
+		await user.click(screen.getByRole("button", { name: "Add" }));
+
+		expect(
+			screen.queryByRole("heading", { name: "Rounds (1)" }),
+		).not.toBeInTheDocument();
+
+		await user.type(
+			screen.getByRole("textbox", { name: "Participant Name" }),
+			"Bob",
+		);
+		await user.click(screen.getByRole("button", { name: "Add" }));
+
+		expect(
+			screen.getByRole("heading", { name: "Rounds (1)" }),
+		).toBeInTheDocument();
+
+		await user.click(screen.getByRole("button", { name: "Remove Alice" }));
+
+		expect(
+			screen.queryByRole("heading", { name: "Rounds (1)" }),
+		).not.toBeInTheDocument();
 	});
 
 	it("removes a participant and recalculates rounds when participants are removed", async () => {

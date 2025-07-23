@@ -11,12 +11,12 @@
 .content-wrapper {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	gap: var(--space-lg);
+	gap: var(--space-md);
 	margin-top: var(--space-lg);
 }
 
 .participants-container {
-	margin-bottom: var(--space-lg);
+	margin-bottom: var(--space-md);
 }
 
 .container-title {

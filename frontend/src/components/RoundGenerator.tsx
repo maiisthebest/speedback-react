@@ -102,7 +102,7 @@ const RoundGenerator = () => {
 					</div>
 				)}
 
-				{rounds.length > 0 && (
+				{rounds.length > 0 && participants.length > 1 && (
 					<div className="rounds-container">
 						<h3 className="container-title">
 							Rounds ({rounds.length})
