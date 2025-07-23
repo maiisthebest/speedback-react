@@ -151,4 +151,34 @@ describe("PromptSuggestions", () => {
 			),
 		).toBeInTheDocument();
 	});
+
+	it("shows and hides loading spinner during fetch", async () => {
+		let resolveFetch: (
+			value: Response | PromiseLike<Response>,
+		) => void = () => {};
+		fetchSpy.mockImplementationOnce(
+			() =>
+				new Promise((resolve) => {
+					resolveFetch = resolve;
+				}),
+		);
+
+		render(<PromptSuggestions />);
+
+		await user.type(
+			screen.getByRole("textbox", { name: "Topic" }),
+			"test topic",
+		);
+		await user.click(screen.getByRole("button", { name: "Generate" }));
+
+		expect(screen.getByLabelText("Loading...")).toBeInTheDocument();
+
+		resolveFetch({
+			ok: true,
+			json: async () => ({ prompts: ["Prompt1"] }),
+		} as Response);
+
+		expect(await screen.findByText("Prompt1")).toBeInTheDocument(); // Wait for content to appear
+		expect(screen.queryByLabelText("Loading...")).not.toBeInTheDocument();
+	});
 });

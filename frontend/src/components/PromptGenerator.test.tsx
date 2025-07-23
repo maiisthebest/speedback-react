@@ -1,25 +1,54 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it } from "vitest";
 import PromptGenerator from "./PromptGenerator";
 
 describe("PromptGenerator", () => {
-	it("renders correctly and toggles prompt accordion visibility on click", async () => {
-		const user = userEvent.setup();
+	let user: ReturnType<typeof userEvent.setup>;
+
+	beforeEach(() => {
+		user = userEvent.setup();
+	});
+
+	it("toggles prompt accordion on click", async () => {
 		render(<PromptGenerator />);
 
-		const heading = screen.getByRole("heading", {
+		const summary = screen.getByRole("heading", {
 			name: "💡 Need help preparing for the session?",
 		});
-		expect(heading).toBeInTheDocument();
+		expect(summary).toBeInTheDocument();
 
 		const content = screen.getByText(/giving feedback can be tricky/i);
 		expect(content).not.toBeVisible();
 
-		await user.click(heading);
+		await user.click(summary);
 		expect(content).toBeVisible();
 
-		await user.click(heading);
+		await user.click(summary);
 		expect(content).not.toBeVisible();
+	});
+
+	it("shifts focus to Topic input (first focusable content) when accordion is clicked", async () => {
+		render(<PromptGenerator />);
+
+		expect(
+			screen.getByText(/giving feedback can be tricky/i),
+		).not.toBeVisible();
+		expect(
+			screen.getByRole("textbox", { name: "Topic" }),
+		).not.toBeVisible();
+
+		await user.click(
+			screen.getByRole("heading", {
+				name: "💡 Need help preparing for the session?",
+			}),
+		);
+
+		expect(
+			await screen.findByRole("textbox", { name: "Topic" }),
+		).toHaveFocus();
+		expect(
+			await screen.findByText(/giving feedback can be tricky/i),
+		).toBeVisible();
 	});
 });
