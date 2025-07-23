@@ -1,6 +1,6 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-export const PROMPT_TEMPLATE = `Generate 3–5 concise prompts to help me write constructive feedback for someone I work with. The prompts should focus on the topic: "{topic}". Make each prompt open-ended (no yes/no questions). Encourage specific, actionable, and kind feedback. Use friendly and neutral language. Return only the list of prompts.`;
+export const PROMPT_TEMPLATE = `Generate 3–5 concise prompts to help me write constructive feedback for someone I work with. The prompts should focus on the topic: "{topic}". Make each prompt open-ended (no yes/no questions). Encourage specific, actionable, and kind feedback. Return only the list of prompts.`;
 export const AI_MODEL = "gemini-2.0-flash";
 
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);

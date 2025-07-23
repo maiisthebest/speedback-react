@@ -47,6 +47,26 @@ describe("generateFeedbackPrompts", () => {
 		]);
 	});
 
+	it("should correctly process and clean response from GenAI", async () => {
+		const mockApiResponse = {
+			response: {
+				text: () =>
+					"  * Prompt 1 with leading space\n*Prompt 2 with no space\n\n  *   Prompt 3 with asterisk and space\n*Prompt 4\n",
+			},
+		};
+		mockGenerateContent.mockResolvedValue(mockApiResponse);
+
+		const mockTopic = "test topic";
+		const prompts = await generateFeedbackPrompts(mockTopic);
+
+		expect(prompts).toEqual([
+			"Prompt 1 with leading space",
+			"Prompt 2 with no space",
+			"Prompt 3 with asterisk and space",
+			"Prompt 4",
+		]);
+	});
+
 	it("throws an error when the AI service fails", async () => {
 		vi.stubEnv("GOOGLE_API_KEY", "test-key");
 
