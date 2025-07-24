@@ -1,24 +1,25 @@
-import { describe, it, expect, vi } from "vitest";
-import handler from "./feedback-prompts.js";
+import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
+import handler, { ratelimit } from "./feedback-prompts.js";
 import { handleFeedbackPromptsRequest } from "../src/requestHandlers/handleFeedbackPromptsRequest.js";
 
 vi.mock("../src/requestHandlers/handleFeedbackPromptsRequest.js");
 
 describe("POST /feedback-prompts", () => {
-	it("should return 200 and prompts for a valid POST request", async () => {
-		const mockPrompts = ["Prompt 1", "Prompt 2"];
-		vi.mocked(handleFeedbackPromptsRequest).mockImplementation(() => {
-			res.status(200).json({ prompts: mockPrompts });
+	let req, res;
+
+	beforeEach(() => {
+		vi.spyOn(ratelimit, "limit").mockResolvedValue({
+			success: true,
+			reset: Date.now() + 60000,
 		});
 
-		const testTopic = "test topic";
-		const req = {
+		req = {
 			method: "POST",
 			headers: { origin: process.env.FRONTEND_URL },
-			body: { topic: testTopic },
+			body: { topic: "test topic" },
 		};
 
-		const res = {
+		res = {
 			statusCode: 0,
 			headers: {},
 			setHeader: vi.fn((key, value) => {
@@ -33,6 +34,17 @@ describe("POST /feedback-prompts", () => {
 			}),
 			end: vi.fn(),
 		};
+	});
+
+	afterEach(() => {
+		vi.restoreAllMocks();
+	});
+
+	it("should return 200 and prompts for a valid POST request", async () => {
+		const mockPrompts = ["Prompt 1", "Prompt 2"];
+		vi.mocked(handleFeedbackPromptsRequest).mockImplementation(() => {
+			res.status(200).json({ prompts: mockPrompts });
+		});
 
 		await handler(req, res);
 
@@ -54,52 +66,17 @@ describe("POST /feedback-prompts", () => {
 	});
 
 	it("should return 405 for non-POST requests", async () => {
-		const req = {
-			method: "GET",
-			headers: { origin: process.env.FRONTEND_URL },
-		};
-
-		const res = {
-			statusCode: 0,
-			status: vi.fn((code) => {
-				res.statusCode = code;
-				return res;
-			}),
-			headers: {},
-			setHeader: vi.fn((key, value) => {
-				res.headers[key] = value;
-			}),
-			json: vi.fn(),
-			end: vi.fn(),
-		};
-
-		await handler(req, res);
+		await handler({ ...req, method: "GET" }, res);
 
 		expect(res.statusCode).toBe(405);
 		expect(res.json).toHaveBeenCalledWith({ error: "Method not allowed" });
 	});
 
 	it("should return 403 for forbidden origin", async () => {
-		const req = {
-			method: "POST",
-			headers: { origin: "http://evil-app.com" },
-		};
-
-		const res = {
-			statusCode: 0,
-			status: vi.fn((code) => {
-				res.statusCode = code;
-				return res;
-			}),
-			headers: {},
-			setHeader: vi.fn((key, value) => {
-				res.headers[key] = value;
-			}),
-			json: vi.fn(),
-			end: vi.fn(),
-		};
-
-		await handler(req, res);
+		await handler(
+			{ ...req, headers: { origin: "http://evil-app.com" } },
+			res,
+		);
 
 		expect(res.statusCode).toBe(403);
 		expect(res.json).toHaveBeenCalledWith({
@@ -114,27 +91,7 @@ describe("POST /feedback-prompts", () => {
 			});
 		});
 
-		const req = {
-			method: "POST",
-			headers: { origin: process.env.FRONTEND_URL },
-			body: {},
-		};
-
-		const res = {
-			statusCode: 0,
-			status: vi.fn((code) => {
-				res.statusCode = code;
-				return res;
-			}),
-			headers: {},
-			setHeader: vi.fn((key, value) => {
-				res.headers[key] = value;
-			}),
-			json: vi.fn(),
-			end: vi.fn(),
-		};
-
-		await handler(req, res);
+		await handler({ ...req, body: {} }, res);
 
 		expect(res.statusCode).toBe(400);
 		expect(res.json).toHaveBeenCalledWith({
@@ -149,27 +106,7 @@ describe("POST /feedback-prompts", () => {
 			});
 		});
 
-		const req = {
-			method: "POST",
-			headers: { origin: process.env.FRONTEND_URL },
-			body: { topic: "     " },
-		};
-
-		const res = {
-			statusCode: 0,
-			status: vi.fn((code) => {
-				res.statusCode = code;
-				return res;
-			}),
-			headers: {},
-			setHeader: vi.fn((key, value) => {
-				res.headers[key] = value;
-			}),
-			json: vi.fn(),
-			end: vi.fn(),
-		};
-
-		await handler(req, res);
+		await handler({ ...req, body: { topic: "     " } }, res);
 
 		expect(res.statusCode).toBe(400);
 		expect(res.json).toHaveBeenCalledWith({
@@ -184,31 +121,68 @@ describe("POST /feedback-prompts", () => {
 			});
 		});
 
-		const req = {
-			method: "POST",
-			headers: { origin: process.env.FRONTEND_URL },
-			body: { topic: "test topic" },
-		};
-
-		const res = {
-			statusCode: 0,
-			status: vi.fn((code) => {
-				res.statusCode = code;
-				return res;
-			}),
-			headers: {},
-			setHeader: vi.fn((key, value) => {
-				res.headers[key] = value;
-			}),
-			json: vi.fn(),
-			end: vi.fn(),
-		};
-
 		await handler(req, res);
 
 		expect(res.statusCode).toBe(500);
 		expect(res.json).toHaveBeenCalledWith({
 			error: "Failed to generate prompts due to an internal error.",
+		});
+	});
+
+	describe("Rate limiting", () => {
+		it("should allow requests when under limit", async () => {
+			const mockedIp = "1.1.1.2";
+			await handler(
+				{
+					...req,
+					headers: { ...req.headers, "x-forwarded-for": mockedIp },
+				},
+				res,
+			);
+
+			expect(ratelimit.limit).toHaveBeenCalledWith(mockedIp);
+			expect(res.statusCode).not.toBe(429);
+		});
+
+		it("should use the first IP when multiple IPs are present in x-forwarded-for", async () => {
+			const mockedIp = "1.1.1.2";
+			await handler(
+				{
+					...req,
+					headers: {
+						...req.headers,
+						"x-forwarded-for": `${mockedIp}, 2.2.2.2, 3.3.3.3`,
+					},
+				},
+				res,
+			);
+
+			expect(ratelimit.limit).toHaveBeenCalledWith(mockedIp);
+			expect(res.statusCode).not.toBe(429);
+		});
+
+		it("should handle requests with no x-forwarded-for header (ip unknown)", async () => {
+			await handler(
+				{ ...req, headers: { origin: process.env.FRONTEND_URL } },
+				res,
+			);
+
+			expect(ratelimit.limit).toHaveBeenCalledWith("unknown");
+			expect(res.statusCode).not.toBe(429);
+		});
+
+		it("should return 429 when rate limit is exceeded", async () => {
+			ratelimit.limit.mockResolvedValue({
+				success: false,
+				reset: Date.now() + 60000,
+			});
+
+			await handler(req, res);
+
+			expect(res.statusCode).toBe(429);
+			expect(res.json).toHaveBeenCalledWith({
+				error: "Too many requests",
+			});
 		});
 	});
 });
