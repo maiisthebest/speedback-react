@@ -88,6 +88,11 @@
 	background: #f0f2ff;
 }
 
+.round-placeholder {
+	align-items: center;
+	color: var(--text-color-light);
+}
+
 @media (max-width: 768px) {
 	.content-wrapper {
 		grid-template-columns: 1fr;

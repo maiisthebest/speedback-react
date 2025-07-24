@@ -159,7 +159,7 @@ describe("RoundGenerator", () => {
 		expect(screen.getByText("Rounds (3)")).toBeInTheDocument();
 	});
 
-	it("does not show rounds if there is 1 participant or less", async () => {
+	it("shows round placeholder if there is 1 participant", async () => {
 		render(<RoundGenerator />);
 
 		expect(
@@ -173,8 +173,8 @@ describe("RoundGenerator", () => {
 		await user.click(screen.getByRole("button", { name: "Add" }));
 
 		expect(
-			screen.queryByRole("heading", { name: "Rounds (1)" }),
-		).not.toBeInTheDocument();
+			screen.getByText("Add one more participant to generate rounds"),
+		).toBeInTheDocument();
 
 		await user.type(
 			screen.getByRole("textbox", { name: "Participant Name" }),
@@ -189,7 +189,13 @@ describe("RoundGenerator", () => {
 		await user.click(screen.getByRole("button", { name: "Remove Alice" }));
 
 		expect(
-			screen.queryByRole("heading", { name: "Rounds (1)" }),
+			screen.getByText("Add one more participant to generate rounds"),
+		).toBeInTheDocument();
+
+		await user.click(screen.getByRole("button", { name: "Remove Bob" }));
+
+		expect(
+			screen.queryByText("Add one more participant to generate rounds"),
 		).not.toBeInTheDocument();
 	});
 
