@@ -6,17 +6,15 @@ This is a monorepo containing the frontend and backend. Speedback is my favourit
 
 ## ✨ Features
 
-With this app, you can:
-
-- Add participants with their names (nicknames, emojis, whatever you like!)
-- Remove participants with a single click
-- Instantly generate rounds so everyone gets a turn with everyone else
-- View all rounds in a super clear, organised way
-- Clearly see who "sits out" each round
-- Generate feedback prompts using **generative AI** to help prepare for the speedback rounds
-- **Powered by the Round Robin algorithm** – everyone meets everyone, and if there's an odd number, you'll know who gets to chill each round ("Mai sits out")
-- Clean, minimal, and responsive UI that looks great on any device (lol more like I'm not good with design haha)
-- Battle-tested with Vitest and React Testing Library (using test-driven development!)
+- Add participants by name — nicknames, emojis, whatever works!
+- Remove participants with a single click.
+- Generate rounds instantly using the **Round Robin algorithm** — everyone meets everyone, no repeats.
+- View rounds in a clear, organised layout.
+- See at a glance who “sits out” each round.
+- Get feedback prompts powered by **generative AI** to help prepare for speedback rounds.
+- Clean, minimal, and responsive UI (okay fine, I'm not that good in design 😅).
+- Built with accessibility in mind — screen reader friendly!
+- Tested with Vitest + React Testing Library (yep, TDD for the win!).
 
 ## 🌀 How Does It Work?
 
@@ -32,7 +30,7 @@ Want to see how it works? Check out [`frontend/src/components/roundRobin.ts`](fr
 
 ### A Little AI Magic ✨
 
-Giving feedback can be tricky. Sometimes you’re just not sure what to say. That’s why the app also includes AI-generated prompts to help participants prepare for their feedback rounds. Just enter the session topic, and the app suggests friendly, open-ended prompts to get the conversation flowing.
+Giving feedback can be tricky. Sometimes you’re just not sure what to say. That’s why the app also includes AI-generated prompts to help participants prepare for their feedback rounds. Just enter the session topic or topics, and the app suggests friendly, open-ended prompts to get the conversation flowing.
 
 Check out [`backend/src/generateFeedbackPrompts.js`](backend/src/generateFeedbackPrompts.js) for the implementation.
 
