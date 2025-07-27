@@ -32,6 +32,10 @@ npm run test
 
 - `GET /api/feedback-prompts`: Returns a list of feedback prompts.
 
+### Rate Limiting
+
+To prevent abuse, the API endpoints are rate-limited. If you exceed the rate limit, you will receive a `429 Too Many Requests` response.
+
 ## 🗂️ Backend Structure
 
 ```
