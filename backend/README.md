@@ -2,15 +2,54 @@
 
 This workspace contains the backend for Speedback.
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 - Node.js
-- (More to come)
+- Vite
+- Vitest
 
 ## Getting Started
 
+**1. Install the magic**
+
 ```bash
-cd backend
 npm install
-npm run dev
+```
+
+**2. Start the server on port 3000**
+
+```bash
+npm run start
+```
+
+**3. Run the tests**
+
+```bash
+npm run test
+```
+
+## API Endpoints
+
+- `GET /api/feedback-prompts`: Returns a list of feedback prompts.
+
+## 🗂️ Backend Structure
+
+```
+backend/
+├── api/
+│   ├── feedback-prompts.js     # Entry point for serverless function
+│   └── feedback-prompts.test.js
+├── src/
+│   ├── generateFeedbackPrompts.js
+│   ├── generateFeedbackPrompts.test.js
+│   ├── local/
+│   │   ├── config.js
+│   │   ├── server.js
+│   │   └── server.test.js
+│   └── requestHandlers/
+│       ├── handleFeedbackPromptsRequest.js
+│       └── handleFeedbackPromptsRequest.test.js
+├── .env.example
+├── package.json
+└── README.md
 ```

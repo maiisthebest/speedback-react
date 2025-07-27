@@ -26,7 +26,7 @@ npm run dev
 **3. Run the tests (because I care!)**
 
 ```bash
-npm run test:watch
+npm run test
 ```
 
 ## 🗂️ Frontend Structure
@@ -35,6 +35,12 @@ npm run test:watch
 frontend/
 ├── src/
 │   ├── components/
+│   │   ├── PromptGenerator.tsx
+│   │   ├── PromptGenerator.test.tsx
+│   │   ├── PromptGenerator.css
+│   │   ├── PromptSuggestions.tsx
+│   │   ├── PromptSuggestions.test.tsx
+│   │   ├── PromptSuggestions.css
 │   │   ├── SpeedbackForm.tsx
 │   │   ├── SpeedbackForm.test.tsx
 │   │   ├── SpeedbackForm.css
@@ -44,11 +50,6 @@ frontend/
 │   │   └── setup.ts
 │   └── App.tsx
 ├── public/
-├── index.html
 ├── package.json
-├── README.md
-├── tsconfig.json
-├── tsconfig.app.json
-├── tsconfig.node.json
-└── vite.config.ts
+└── README.md
 ```
