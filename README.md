@@ -44,7 +44,7 @@ _This project was made for fun! I'm not an expert in design, so the styling migh
 
 ## 🚀 Future Enhancements
 
-The plan is to make Speedback smarter and more context‑aware. Upcoming ideas include:
+The plan is to make Speedback smarter and more context‑aware (AI context engineering ✨). Upcoming ideas include:
 
 - **Dynamic timing suggestions** – recommend how long each round should last based on participant number and topics.
 - **Topic recommendations** – surface feedback themes or areas to explore based on past sessions.
