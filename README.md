@@ -42,6 +42,13 @@ You can add/remove people, generate rounds, see who's taking a break, and get so
 
 _This project was made for fun! I'm not an expert in design, so the styling might not be the fanciest, BUT it works_ 😝
 
+## 🚀 Future Enhancements
+
+The plan is to make Speedback smarter and more context‑aware. Upcoming ideas include:
+
+- **Dynamic timing suggestions** – recommend how long each round should last based on participant number and topics.
+- **Topic recommendations** – surface feedback themes or areas to explore based on past sessions.
+
 ## Workspaces
 
 This project is divided into two workspaces:
