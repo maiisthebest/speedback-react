@@ -34,7 +34,7 @@ npm run test
 
 ### Rate Limiting
 
-To prevent abuse, the API endpoints are rate-limited. If you exceed the rate limit, you will receive a `429 Too Many Requests` response.
+To prevent abuse, the API endpoints are rate-limited (5 requests / min 😉). If you exceed the rate limit, you will receive a `429 Too Many Requests` response.
 
 ## 🗂️ Backend Structure
 
