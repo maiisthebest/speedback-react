@@ -9,6 +9,11 @@ Welcome to the frontend for Speedback!
 - Vite
 - Vitest + React Testing Library
 
+## ✨ Features
+
+- **Responsive design**: Adapts to different screen sizes for a great experience on any device.
+- **Screen reader accessible**: Built with accessibility in mind for users of screen readers 🙌
+
 ## 🚀 Getting Started
 
 **1. Install the magic**
